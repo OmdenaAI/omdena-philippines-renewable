@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title>Target sites for renewable energy with 4,000 people in a 500m radius</title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/ongrid_15km_3.js"></script>
+        <script src="data/clusters_4.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[8.496353939425243,3.3802453639359564],[8.674169040751346,3.6329825585174413]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19,
+        });
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        var img_population_1 = 'data/population_1.png';
+        var img_bounds_population_1 = [[4.270416851,2.668750004],[13.892083479,14.679583289]];
+        var layer_population_1 = new L.imageOverlay(img_population_1, img_bounds_population_1);
+        bounds_group.addLayer(layer_population_1);
+        map.addLayer(layer_population_1);
+        var img_lights_2 = 'data/lights_2.png';
+        var img_bounds_lights_2 = [[4.270416851,2.668750004],[13.892083479,14.679, 583289]];
+        var layer_lights_2 = new L.imageOverlay(img_lights_2, img_bounds_lights_2);
+        bounds_group.addLayer(layer_lights_2);
+        map.addLayer(layer_lights_2);
+        function pop_ongrid_15km_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        var pattern_ongrid_15km_3_0 = new L.StripePattern({
+            weight: 0.3,
+            spaceWeight: 2.0,
+            color: '#c5c5c5',
+            opacity: 1.0,
+            spaceOpacity: 0,
+            angle: 315
+        });
+        pattern_ongrid_15km_3_0.addTo(map);
+        function style_ongrid_15km_3_0() {
+            return {
+                pane: 'pane_ongrid_15km_3',
+                stroke: false,
+                fillOpacity: 1,
+                fillPattern: pattern_ongrid_15km_3_0,
+                interactive: true,
+            }
+        }
+        function style_ongrid_15km_3_1() {
+            return {
+                pane: 'pane_ongrid_15km_3',
+                opacity: 1,
+                color: 'rgba(197,197,197,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_ongrid_15km_3');
+        map.getPane('pane_ongrid_15km_3').style.zIndex = 403;
+        map.getPane('pane_ongrid_15km_3').style['mix-blend-mode'] = 'normal';
+        var layer_ongrid_15km_3 = new L.geoJson.multiStyle(json_ongrid_15km_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ongrid_15km_3',
+            layerName: 'layer_ongrid_15km_3',
+            pane: 'pane_ongrid_15km_3',
+            onEachFeature: pop_ongrid_15km_3,
+            styles: [style_ongrid_15km_3_0,style_ongrid_15km_3_1,]
+        });
+        bounds_group.addLayer(layer_ongrid_15km_3);
+        map.addLayer(layer_ongrid_15km_3);
+        function pop_clusters_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['label_out'] !== null ? Autolinker.link(feature.properties['label_out'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_clusters_4_0() {
+            return {
+                pane: 'pane_clusters_4',
+                opacity: 1,
+                color: 'rgba(77,175,74,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_clusters_4');
+        map.getPane('pane_clusters_4').style.zIndex = 404;
+        map.getPane('pane_clusters_4').style['mix-blend-mode'] = 'normal';
+        var layer_clusters_4 = new L.geoJson(json_clusters_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_clusters_4',
+            layerName: 'layer_clusters_4',
+            pane: 'pane_clusters_4',
+            onEachFeature: pop_clusters_4,
+            style: style_clusters_4_0,
+        });
+        bounds_group.addLayer(layer_clusters_4);
+        map.addLayer(layer_clusters_4);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>Target sites for renewable energy with 4,000 people in a 500m radius</h2>';
+            };
+            title.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/clusters_4.png" /> clusters': layer_clusters_4,'<img src="legend/ongrid_15km_3.png" /> ongrid_15km': layer_ongrid_15km_3,"lights": layer_lights_2,"population": layer_population_1,"OpenStreetMap": layer_OpenStreetMap_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_clusters_4.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['label_out'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['label_out']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_clusters_4'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        map.addControl(new L.Control.Search({
+            layer: layer_clusters_4,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'label_out'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        resetLabels([layer_clusters_4]);
+        map.on("zoomend", function(){
+            resetLabels([layer_clusters_4]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_clusters_4]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_clusters_4]);
+        });
+        </script>
+    </body>
+</html>

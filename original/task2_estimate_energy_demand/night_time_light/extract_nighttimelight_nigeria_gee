@@ -1,0 +1,93 @@
+// the script will run on code GEE to visualize cluster of area with population (grid3 source) and without nightlight
+(combine two sources: VIIRs & DMP)
+// After finishing "Run", go to "Tasks" then "Run" to save demand to your gdrive in tif format)
+
+
+var nigeria = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017')
+                .filter(ee.Filter.eq('country_na', 'Nigeria'));
+
+var nighttime_viirs = ee.ImageCollection('NOAA/VIIRS/DNB/MONTHLY_V1/VCMSLCFG')
+                  .filter(ee.Filter.date('2018-09-01', '2019-09-30'))
+                  .median()
+                  .select('avg_rad')
+                  .clipToCollection(nigeria);
+var nighttime_dmsp = ee.ImageCollection('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS')
+                  .filter(ee.Filter.date('2013-01-01', '2013-12-31'))
+                  .median()
+                  .select('stable_lights')
+                  .clipToCollection(nigeria);
+
+// var nighttimeLightsVis = {
+//   min: 3.0,
+//   max: 60.0,
+// };
+
+
+Map.setOptions("HYBRID")
+
+Map.setCenter(7.491302,9.072264, 12); // abuja, nigeria (not connected)
+// Map.setCenter(5.7120808, 7.7535197, 7); // Omuo, Ekiti (not connected)
+// Map.setCenter(6.6458921, 7.5421616, 12); // Ajaokuta (Connected)
+
+var lightviirs_threshold = 0.6
+var lightdmsp_threshold = 0.1
+var pop_threshold = 0
+var demand_threshold = 10.0
+
+// lights layer
+Map.addLayer(nighttime_viirs.updateMask(nighttime_viirs.gte(lightviirs_threshold)),
+            {opacity:0.4, palette:['000000','0000FF']},
+            'Blue: Nighttime Lights viir median');
+Map.addLayer(nighttime_dmsp.updateMask(nighttime_dmsp.gte(lightdmsp_threshold)),
+            {opacity:0.4, palette:['000000','0000FF']},
+            'Blue: Nighttime Lights dmsp median');
+// pop layer
+// var rescaled_pop = img_pop3.resample('bilinear').reproject({
+//   crs: nighttime.projection().crs(),
+//   scale: 500
+// }).multiply((500/100)^2); // rescale magnitude
+// Map.addLayer(img_pop3,
+//             {opacity:0.4, min:0, max:150, palette:['FFFFFF','00FF00']},
+//             'Gnreen: Population estimate');
+
+// Demand layer
+var nighttimeLightsVis = {
+  min: 0, max: 50,
+  opacity: 0.8,
+  palette:['000000','FF0000'],
+};
+
+var demand = img_pop3.gte(pop_threshold) // threshold pop
+                    .multiply(nighttime_viirs.lte(lightviirs_threshold)) // pop without lights
+                    .multiply(nighttime_dmsp.lte(lightdmsp_threshold))
+// scale to population density and mask demand only
+demand = demand.multiply(img_pop3) //.updateMask(demand)
+
+// Define concolutional kernel: 1km radius
+var circular_filter = ee.Kernel.gaussian({
+  radius:1000, sigma:300, units:'meters', normalize:true
+});
+// Smooth the image by convolving with the kernel.
+var smooth = demand.unmask().convolve(circular_filter);
+smooth = smooth.updateMask(smooth.gt(10));
+
+Map.addLayer(smooth, nighttimeLightsVis, 'Red: Pop and no Lights');
+
+var patchid = smooth.gt(demand_threshold)
+                    .connectedComponents(ee.Kernel.plus(1), 256);
+Map.addLayer(patchid.randomVisualizer(), {opacity:0.8}, 'patches');
+
+// print(smooth.arrayArgmax())
+
+Export.image.toDrive({
+  image: demand,
+  description: 'PopGRID3NoLightsVIIRSsmoothDemand1km',
+  scale: 100, // pixel resolution
+  region: nigeria,
+  fileFormat: 'GeoTIFF',
+  maxPixels: 10000000000000
+});
+
+
+
+
