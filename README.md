@@ -1,16 +1,18 @@
 # Omdena Philippines Renewable
 Increasing Renewable Energy Access in Philippines through AI
 
+This initiative’s goal is to use Philippine satellite data in conjunction with other relevant dataset to identify sites that are most suitable for solar panel installation as a greener energy source through machine learning and coverage analysis. 
+
 ## Contribution Guidelines
-- Have a Look at the folder structure to understand where to store/upload your contribution
+- Have a Look at the [project structure](#project-structure) and [folder overview](#folder-overview) below to understand where to store/upload your contribution
 - If you're creating a task, Go to the task folder and create a new folder with the below naming convention and add a README.md with task details and goals to help other contributors understand
     - Task Folder Naming Convention : _task-n-taskname.(n is the task number)_  ex: task-1-data-analysis, task-2-model-deployment etc.
     - Create a README.md with a table containing information table about all contributions for the task.
 - If you're contributing for a task, please make sure to store in relavant location and update the README.md information table with your contribution details.
 - Make sure your File names(jupyter notebooks, python files, data sheet file names etc) has proper naming to help others in easily identifing them.
-- Please restrict yourself from creating unnessesary folders other than in 'tasks' folder to avoid confusion. 
+- Please restrict yourself from creating unnessesary folders other than in 'tasks' folder (as above mentioned naming convention) to avoid confusion. 
 
-# Project Structure
+## Project Structure
 
     ├── LICENSE
     ├── README.md          <- The top-level README for developers/collaborators using this project.
@@ -50,3 +52,25 @@ Increasing Renewable Energy Access in Philippines through AI
 - Visualization     - Folder to store dashboards, analysis and visualization reports
 - Results           - Folder to store final analysis modelling results for the project.
 
+## Project Setup 
+
+Open the Command line or Terminal
+
+- Clone the repository
+
+```
+git clone https://github.com/OmdenaAI/omdena-philippines-renewable.git
+```
+- Move to the folder
+
+```
+cd omdena-philippines-renewable
+```
+- To open with VSCode
+```
+code .
+```
+- To open with jupyter notebook (or maually open using jupyter notebook app)
+```
+jupyter notebook
+```
