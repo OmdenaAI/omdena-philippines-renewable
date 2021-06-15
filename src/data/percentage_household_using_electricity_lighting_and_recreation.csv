@@ -1,0 +1,15 @@
+type of lamp used for lighting / type of applicance used for recreation,all income class,"less than 10,000","10,000 to 29,999","30,000 to 59,000","60,000 and over"
+number of households (In thousands),18282,10645,5692,1537,407
+LIGHTING,99.9,99.9,100,100,100
+incandescent lamp,13.7,13.1,14.5,13.4,17
+linear flourescent lamp,47.3,12.5,53.3,56,56.8
+circular fluorescent lamp,5.3,1.6,7.4,17.6,26
+compact fluorescent lamp,88.7,85.8,91.9,95,96.3
+LED lights,0.9,0.8,0.8,1.2,3.2
+others,1.1,0.7,1.1,2.3,7.1
+RECREATION,88.8,88.3,96.1,98.9,98.5
+radio / tape recorder stereo,42.7,38.3,45.4,54.7,55.4
+tv,94,90.7,97.8,98.7,99.3
+vcr/karaoke/videoke,31.6,27.8,35.6,38,37.2
+video games,0.3,0.1,0.3,1.2,1.2
+others,1.6,1.4,1.8,1.8,2.7
