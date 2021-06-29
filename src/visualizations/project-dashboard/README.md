@@ -1,6 +1,6 @@
-# beta-nextjs-webapp-typescript
+# project-dashboard
 
-> Personal preference boilerplate for building NextJS websites and web application
+> Wep application for visualizing all the datasets for the Omdena Philippines renewable energy project. The project is built using NextJS
 
 ## Main pre-installed packages
 
