@@ -3,11 +3,12 @@
   z-index: 3;
   height: 95vh;
   width: 370px;
-  background: #fff;
+  background: rgb(252, 253, 253);
   border-radius: 8px;
   top: 20px;
   left: 20px;
-  box-shadow: -1px 4px 11px 3px rgba(85, 86, 88, 0.164);
+  // box-shadow: -1px 4px 11px 3px rgba(85, 86, 88, 0.164);
+  box-shadow: rgba(0, 0, 0, 0.144) 0px 5px 15px;
   overflow: hidden;
   overflow-y: auto;
 
@@ -20,6 +21,8 @@
 
     img {
       width: 45px;
+      position: relative;
+      top: -2px;
     }
 
     #search-input {
@@ -59,10 +62,17 @@
       font-size: 12px;
       text-transform: uppercase;
       font-weight: 700;
-      letter-spacing: 1px;
       border-bottom: 3px solid transparent;
       color: rgb(190, 188, 188);
       cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        color: rgb(125, 130, 145);
+        border-color: rgb(13, 13, 172);
+        transition: 0.3s;
+      }
 
       &.active {
         cursor: default;
@@ -74,8 +84,96 @@
 }
 
 .sidebar-content {
-  margin-top: 20px;
-  padding: 0px 15px;
+  margin: 20px 0px;
+  padding: 0px 18px;
   display: flex;
   flex-direction: column;
+}
+
+.cover-card {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.315) 30%,
+      rgba(24, 23, 22, 0.897)
+    ),
+    url("https://media.philstar.com/photos/2019/07/06/bus6-solar-farm_2019-07-06_19-36-37.jpg")
+      no-repeat;
+  background-size: cover;
+  height: 150px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px 25px;
+  display: flex;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.137) 0px 8px 32px;
+  margin-bottom: 20px;
+
+  span {
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+.card-item {
+  padding: 10px;
+  border-bottom: 0.3px solid rgba(221, 221, 221, 0.712);
+  display: flex;
+  justify-content: space-between;
+  border-left: 1px solid transparent;
+  transition: 0.3s;
+
+  .card-item-content {
+    display: flex;
+    flex-direction: row;
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        font-size: 14px;
+        overflow: hidden;
+        width: 200px;
+      }
+
+      .tag-row {
+        overflow-x: hidden;
+      }
+    }
+  }
+
+  .score-card {
+    $size: 45px;
+    background: rgb(226, 240, 247);
+    width: auto;
+    padding: 0px 10px;
+    height: $size;
+    border-radius: 10%;
+    border: 2px solid rgb(191, 191, 235);
+    margin-right: 10px;
+    display: grid;
+    display: none;
+
+    span {
+      margin: auto;
+    }
+  }
+
+  .la-2x {
+    color: rgb(170, 168, 168);
+    position: relative;
+    bottom: -8px;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    border-left: 4px solid rgb(71, 115, 180);
+    cursor: pointer;
+    background: rgb(239, 245, 247);
+    transition: 0.3s;
+
+    .la-2x {
+      color: rgb(113, 181, 238);
+      transition: 0.3s;
+    }
+  }
 }
