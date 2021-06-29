@@ -45,7 +45,7 @@
 
 .sidebar-navigation {
   position: sticky;
-  background: #fff;
+  background: rgb(255, 255, 255);
   box-shadow: -1px 4px 11px 3px rgba(172, 188, 231, 0.26);
   z-index: 9;
   top: 0px;
@@ -174,6 +174,30 @@
     .la-2x {
       color: rgb(113, 181, 238);
       transition: 0.3s;
+    }
+  }
+}
+
+// details screen
+
+.details-screen {
+  .top-bar {
+    padding: 8px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.3px solid rgba(221, 221, 221, 0.548);
+    background: #172b4d;
+
+    .btn-default {
+      height: 40px;
+      width: 55px;
+      padding: 0px;
+
+      i {
+        font-weight: 700;
+        font-size: 35px;
+      }
     }
   }
 }
