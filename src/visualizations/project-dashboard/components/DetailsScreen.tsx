@@ -1,7 +1,7 @@
 const DetailsScreen = (props: any) => {
   return (
     <>
-      <div className="details-screen fade-in">
+      <div className="details-screen fade-in" id="thread-content">
         <div className="top-bar">
           <button
             className="btn btn fade-in"

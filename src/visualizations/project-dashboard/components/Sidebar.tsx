@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DetailsScreen from "./DetailsScreen";
+import SiteDetails from "./SiteDetails";
 
 const Sidebar = (props: any) => {
   const [areas, setAreas] = useState<any>(null);
   const [screen, setScreen] = useState<string>("home");
+  const [selectedSite, selectSite] = useState<any>(null);
 
   const fetchData = () => {
     axios.get("/api/doe_dataset").then((res: any) => {
@@ -19,9 +21,10 @@ const Sidebar = (props: any) => {
       lng: details.longitude,
     };
 
-    console.log("source=>", detailCoordinates);
     localStorage.coordinates = JSON.stringify(detailCoordinates);
     props.setCoordinates(detailCoordinates);
+    selectSite(details);
+    setScreen("details");
   };
 
   useEffect(() => {
@@ -33,11 +36,7 @@ const Sidebar = (props: any) => {
       <div className="sidebar">
         {screen === "details" && (
           <DetailsScreen setScreen={setScreen} title="Location Details">
-            <div className="cover-card fade-in dl-2">
-              <span className="mt-auto">
-                Potential Sites for Solar Power Stations in the Philippines
-              </span>
-            </div>
+            <SiteDetails data={selectedSite} />
           </DetailsScreen>
         )}
 

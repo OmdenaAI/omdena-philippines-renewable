@@ -188,6 +188,9 @@
     justify-content: left;
     border-bottom: 0.3px solid rgba(221, 221, 221, 0.548);
     background: #8bafec;
+    position: sticky;
+    top: 0px;
+    z-index: 2;
 
     .btn {
       height: 40px;
