@@ -93,7 +93,7 @@
 .cover-card {
   background: linear-gradient(
       rgba(255, 255, 255, 0.315) 30%,
-      rgba(24, 23, 22, 0.897)
+      rgba(27, 27, 27, 0.979)
     ),
     url("https://media.philstar.com/photos/2019/07/06/bus6-solar-farm_2019-07-06_19-36-37.jpg")
       no-repeat;
@@ -210,6 +210,21 @@
       font-size: 17px;
       position: relative;
       top: 8px;
+    }
+  }
+}
+
+// infocard
+
+.info-card {
+  margin: 5px 0px;
+  .header {
+    padding: 5px 15px;
+    border-bottom: 0.3px solid rgba(221, 221, 221, 0.575);
+
+    small {
+      font-weight: 700;
+      text-transform: uppercase;
     }
   }
 }

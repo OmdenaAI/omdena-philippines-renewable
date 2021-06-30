@@ -3,6 +3,8 @@ import { useEffect } from "react";
 const SiteDetails = (props: any) => {
   const data = props.data;
 
+  let values: any = Object.values(data);
+
   useEffect(() => {
     let sidebarContainer: any = document.querySelector(".sidebar");
     setTimeout(() => {
@@ -16,42 +18,25 @@ const SiteDetails = (props: any) => {
         <h2 className="mt-auto text-white mb--1">{data.facility_name}</h2>
         <small className="text-white">{data.municipality}</small>
       </div>
-      <div className="card p-2 px-3">
-        <p>{data.municipality}</p>
-      </div>
 
-      <div className="container-fluid fade-in-bottom table-container">
-        <div className="row">
-          <div className="col">
-            <div className="card border">
-              <div className="card-header  table-header">
-                <h4 className="mb-0">
-                  <i className="la la-user" /> Site Details
-                </h4>
+      {data &&
+        Object.keys(data).map((x: any, index: number) => {
+          return (
+            <div className="card border info-card" key={index}>
+              <div className="header">
+                <small>
+                  <i className="la la-cube text-primary" />{" "}
+                  {x.split("_").join(" ")}
+                </small>
               </div>
-              <div className="table-responsive">
-                <table className="table align-items-center table-flush">
-                  <tbody className="list">
-                    {data &&
-                      Object.keys(data).map((x: any, index: number) => {
-                        return (
-                          <tr className={`${index === 0 ? "est-head" : ""}`}>
-                            <td>
-                              <span>{x}</span>
-                            </td>
-                            <td>
-                              <span>-</span>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                  </tbody>
-                </table>
-              </div>
+              {x !== "icon" && (
+                <span className="px-3 py-2">
+                  {values[index] ? values[index] : "N/A"}
+                </span>
+              )}
             </div>
-          </div>
-        </div>
-      </div>
+          );
+        })}
     </>
   );
 };
