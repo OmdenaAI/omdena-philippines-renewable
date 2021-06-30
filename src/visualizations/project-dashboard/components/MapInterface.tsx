@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import { currentLocation, MovesStyle } from "./Utils";
+import { currentLocation, fetchGlobalMapdata, guid, MovesStyle } from "./Utils";
 
+// replace with your own access token from Mapbox.
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYnJ5Y2UwNiIsImEiOiJjazNmbndybm4wMDk3M29wZ2dicjlmb29iIn0.NVknKG525ZpQVmIAbFiqfw";
 
@@ -25,10 +26,39 @@ const MapInterface = (props: any) => {
       });
     };
 
+    const renderMarkers = () => {
+      let markersData: any = fetchGlobalMapdata();
+      let existingMarker = document.querySelector(".map-marker");
+
+      if (!existingMarker) {
+        markersData.forEach((nmarker: any, index: number) => {
+          //:TODO complete marker render functions
+
+          var elx = document.createElement("div");
+          elx.className = `marker-location-update lu-${index}`;
+          elx.id = `mxu-${guid()}`;
+          elx.innerHTML = `
+          <div class="map-marker ${nmarker.category.replace(" ", "")}">
+          <div class="marker-dot"></div>
+          </div>
+          `;
+          new mapboxgl.Marker(elx)
+            .setLngLat([nmarker.longitude, nmarker.latitude])
+            .addTo(map);
+        });
+      }
+    };
+
     // bind events to trigger buttons
     let mapJump: any = document.getElementById("mapJump");
+    let markerTrigger: any = document.getElementById("load-markers");
+
     mapJump.onclick = () => {
       flytoLocation();
+    };
+
+    markerTrigger.onclick = () => {
+      renderMarkers();
     };
   }, []);
 
@@ -42,10 +72,8 @@ const MapInterface = (props: any) => {
     <>
       <>
         <button id="mapJump" className="d-none" />
-        <button id="removeRoutes" className="d-none" />
 
-        <button id="incidents-btn" className="d-none" />
-        <button id="incident-track" className="d-none" />
+        <button id="load-markers" className="d-none" />
 
         <div>
           <div id="map" className="absolute top right left" />

@@ -17,7 +17,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom: 0.3px solid rgba(221, 221, 221, 0.548);
+    border-bottom: 0.3px solid rgb(221, 221, 221);
 
     img {
       width: 45px;
@@ -46,9 +46,9 @@
 .sidebar-navigation {
   position: sticky;
   background: rgb(255, 255, 255);
-  box-shadow: -1px 4px 11px 3px rgba(172, 188, 231, 0.26);
+  box-shadow: -1px 4px 11px 3px rgba(172, 188, 231, 0.527);
   z-index: 9;
-  top: 0px;
+  top: -1px;
 
   .nav-links {
     padding: 0px 10px;
@@ -63,21 +63,21 @@
       text-transform: uppercase;
       font-weight: 700;
       border-bottom: 3px solid transparent;
-      color: rgb(190, 188, 188);
+      color: rgb(150, 147, 147);
       cursor: pointer;
       transition: 0.3s;
 
       &:hover {
         cursor: pointer;
-        color: rgb(125, 130, 145);
-        border-color: rgb(13, 13, 172);
+        color: rgb(94, 109, 155);
+        border-color: rgb(115, 115, 151);
         transition: 0.3s;
       }
 
       &.active {
         cursor: default;
-        color: rgb(99, 131, 233);
-        border-color: rgb(156, 156, 236);
+        color: rgb(45, 59, 180);
+        border-color: rgb(100, 100, 209);
       }
     }
   }
@@ -92,8 +92,8 @@
 
 .cover-card {
   background: linear-gradient(
-      rgba(255, 255, 255, 0.315) 30%,
-      rgba(27, 27, 27, 0.979)
+      rgba(255, 255, 255, 0.315) 20%,
+      rgba(8, 8, 8, 0.979)
     ),
     url("https://media.philstar.com/photos/2019/07/06/bus6-solar-farm_2019-07-06_19-36-37.jpg")
       no-repeat;
@@ -103,8 +103,10 @@
   border-radius: 8px;
   padding: 20px 25px;
   display: flex;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.137) 0px 8px 32px;
+
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
   margin-bottom: 20px;
 
   span {
@@ -186,10 +188,10 @@
     width: 100%;
     display: flex;
     justify-content: left;
-    border-bottom: 0.3px solid rgba(221, 221, 221, 0.548);
-    background: #8bafec;
+    background: #0b2758;
     position: sticky;
-    top: 0px;
+    box-shadow: -1px 4px 11px 3px rgba(172, 188, 231, 0.527);
+    top: -1px;
     z-index: 2;
 
     .btn {
@@ -218,6 +220,7 @@
 
 .info-card {
   margin: 5px 0px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   .header {
     padding: 5px 15px;
     border-bottom: 0.3px solid rgba(221, 221, 221, 0.575);

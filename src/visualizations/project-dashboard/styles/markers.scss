@@ -1,0 +1,60 @@
+.map-marker {
+  $size: 10px;
+  height: $size;
+  width: $size;
+  border: 0.1px solid #fff;
+  // box-shadow: rgba(155, 240, 229, 0.897) 0px 1px 0px,
+  //   rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(188, 238, 245, 0.945) 0px 16px 48px;
+  // opacity: 0.7;
+  transform: rotate(40deg);
+
+  &.Solar {
+    background: rgb(113, 241, 113);
+
+    transform: none;
+    $size: 15px;
+    height: $size;
+    width: $size;
+    border-radius: 100%;
+
+    opacity: 1;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(10.2);
+      opacity: 0.3;
+      transition: 0.3s;
+      // border-radius: 0px;
+      // border: 0.00000001px dashed #fff;
+      border: none;
+    }
+  }
+
+  &.Hydroelectric {
+    background: rgb(59, 194, 248);
+  }
+
+  &.Wind {
+    background: rgb(59, 70, 226);
+  }
+
+  &.Oil-Based {
+    background: rgb(226, 84, 59);
+  }
+
+  &.Biomass {
+    background: rgb(233, 170, 241);
+  }
+
+  &.NaturalGas {
+    background: rgb(181, 201, 96);
+  }
+
+  &.Geothermal {
+    background: rgb(245, 209, 130);
+  }
+
+  &.Coal {
+    background: rgb(77, 64, 37);
+  }
+}

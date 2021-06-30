@@ -50,3 +50,15 @@ export const currentLocation = () => {
     return { lng: 120.979, lat: 15.0941 };
   }
 };
+
+// set global map data
+
+export const setGlobalMapdata = (data: any) => {
+  const global: any = window;
+  global.mapData = data;
+};
+
+export const fetchGlobalMapdata = () => {
+  const global: any = window;
+  return global.mapData;
+};

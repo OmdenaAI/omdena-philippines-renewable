@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DetailsScreen from "./DetailsScreen";
 import SiteDetails from "./SiteDetails";
+import { setGlobalMapdata } from "./Utils";
 
 const Sidebar = (props: any) => {
   const [areas, setAreas] = useState<any>(null);
@@ -12,6 +13,12 @@ const Sidebar = (props: any) => {
     axios.get("/api/doe_dataset").then((res: any) => {
       let solarAreas = res.data.filter((x: any) => x.category === "Solar");
       setAreas(solarAreas);
+
+      setGlobalMapdata(res.data);
+
+      // trigger marker render
+      let markerTrigger: any = document.getElementById("load-markers");
+      markerTrigger.click();
     });
   };
 
