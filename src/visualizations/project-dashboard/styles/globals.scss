@@ -108,3 +108,11 @@ code {
   z-index: 1;
   filter: contrast(100%) opacity(100%);
 }
+
+// map inteface
+
+#map {
+  height: 100vh;
+  width: 100%;
+  z-index: 2;
+}

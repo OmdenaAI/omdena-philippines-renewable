@@ -1,9 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
+import MapInterface from "../components/MapInterface";
 import Sidebar from "../components/Sidebar";
 import { startPageLoad, stopPageLoad, Toast } from "../components/Utils";
 
 const Index = () => {
+  const [coordinates, setCoordinates] = useState(null);
+
   useEffect(() => {
     startPageLoad();
     setTimeout(() => {
@@ -16,7 +19,11 @@ const Index = () => {
     <>
       <Layout>
         <div className="grid-wrapper fade-in" />
-        <Sidebar />
+        <Sidebar coordinates={coordinates} setCoordinates={setCoordinates} />
+        <MapInterface
+          coordinates={coordinates}
+          setCoordinates={setCoordinates}
+        />
       </Layout>
     </>
   );

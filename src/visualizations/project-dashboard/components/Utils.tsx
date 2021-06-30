@@ -31,3 +31,22 @@ export const startPageLoad = () => {
 export const stopPageLoad = () => {
   nprogress.done();
 };
+
+export const lightMapStyle =
+  "https://raw.githubusercontent.com/jingsam/mapbox-gl-styles/master/Light.json";
+export const HurricaneMapStyle =
+  "https://raw.githubusercontent.com/jingsam/mapbox-gl-styles/master/Hurricane.json";
+
+export const XrayMapStyle =
+  "https://raw.githubusercontent.com/jingsam/mapbox-gl-styles/master/X-ray.json";
+
+export const MovesStyle =
+  "https://raw.githubusercontent.com/jingsam/mapbox-gl-styles/master/Moves-map.json";
+
+export const currentLocation = () => {
+  if (localStorage.coordinates) {
+    return JSON.parse(localStorage.coordinates);
+  } else {
+    return { lng: 120.979, lat: 15.0941 };
+  }
+};

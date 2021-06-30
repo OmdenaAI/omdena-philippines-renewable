@@ -185,11 +185,11 @@
     padding: 8px 10px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     border-bottom: 0.3px solid rgba(221, 221, 221, 0.548);
-    background: #172b4d;
+    background: #8bafec;
 
-    .btn-default {
+    .btn {
       height: 40px;
       width: 55px;
       padding: 0px;
@@ -197,7 +197,16 @@
       i {
         font-weight: 700;
         font-size: 35px;
+        color: #fff;
       }
+    }
+
+    span {
+      font-weight: 700;
+      color: #fff;
+      font-size: 17px;
+      position: relative;
+      top: 8px;
     }
   }
 }

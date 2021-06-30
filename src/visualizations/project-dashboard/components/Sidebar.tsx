@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DetailsScreen from "./DetailsScreen";
 
-const Sidebar = () => {
+const Sidebar = (props: any) => {
   const [areas, setAreas] = useState<any>(null);
   const [screen, setScreen] = useState<string>("home");
 
@@ -13,6 +13,17 @@ const Sidebar = () => {
     });
   };
 
+  const viewDetails = (details: any) => {
+    let detailCoordinates = {
+      lat: details.latitude,
+      lng: details.longitude,
+    };
+
+    console.log("source=>", detailCoordinates);
+    localStorage.coordinates = JSON.stringify(detailCoordinates);
+    props.setCoordinates(detailCoordinates);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,7 +32,7 @@ const Sidebar = () => {
     <>
       <div className="sidebar">
         {screen === "details" && (
-          <DetailsScreen setScreen={setScreen}>
+          <DetailsScreen setScreen={setScreen} title="Location Details">
             <div className="cover-card fade-in dl-2">
               <span className="mt-auto">
                 Potential Sites for Solar Power Stations in the Philippines
@@ -31,13 +42,13 @@ const Sidebar = () => {
         )}
 
         {screen === "research" && (
-          <DetailsScreen setScreen={setScreen}>
+          <DetailsScreen setScreen={setScreen} title="Notebooks">
             <h1>Research</h1>
           </DetailsScreen>
         )}
 
         {screen === "about" && (
-          <DetailsScreen setScreen={setScreen}>
+          <DetailsScreen setScreen={setScreen} title="About the Project">
             <h1>About the project</h1>
           </DetailsScreen>
         )}
@@ -92,7 +103,7 @@ const Sidebar = () => {
                       className="card-item"
                       key={index}
                       onClick={() => {
-                        setScreen("details");
+                        viewDetails(data);
                       }}
                     >
                       <div className="card-item-content">
