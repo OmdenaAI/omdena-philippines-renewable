@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     width: 600px;
+    z-index: 999;
   }
 
   .marker-info-content {
@@ -26,7 +27,7 @@
     // width: 250px;
     // top: -100px;
     // left: -50px;
-    z-index: 3;
+    z-index: 9;
     // display: none;
 
     span {
@@ -107,6 +108,19 @@
   }
 
   &:hover {
+    .marker-info {
+      display: flex;
+    }
+    .marker {
+      &.Solar {
+        border: 0px;
+        opacity: 0.3;
+        transform: scale(7.3);
+      }
+    }
+  }
+
+  &.active-marker {
     .marker-info {
       display: flex;
     }

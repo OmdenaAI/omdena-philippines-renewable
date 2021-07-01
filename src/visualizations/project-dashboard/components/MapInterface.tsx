@@ -14,6 +14,9 @@ const MapInterface = (props: any) => {
       style: MovesStyle,
       center: [120.979, 15.0941],
       zoom: 7.3,
+      minZoom: 6,
+      maxPitch: 65, // pitch in degrees
+      maxBearing: -65, // bearing in degrees
     });
 
     const flytoLocation = () => {
@@ -36,10 +39,14 @@ const MapInterface = (props: any) => {
 
           var elx = document.createElement("div");
           elx.className = `marker-location-update lu-${index}`;
-          elx.id = `mxu-${guid()}`;
+          elx.onclick = () => {
+            if (nmarker.category === "Solar") {
+              props.selectArea(nmarker);
+            }
+          };
           elx.innerHTML = `
 
-          <div class="map-marker">
+          <div class="map-marker" id="mk-${nmarker.id}">
           <div class="marker-info">
           <div class="marker-info-content">
             <span>${nmarker.facility_name}</span>
@@ -55,6 +62,13 @@ const MapInterface = (props: any) => {
             .addTo(map);
         });
       }
+
+      // ease map
+
+      map.easeTo({
+        padding: { left: 320 },
+        duration: 1000,
+      });
     };
 
     // bind events to trigger buttons

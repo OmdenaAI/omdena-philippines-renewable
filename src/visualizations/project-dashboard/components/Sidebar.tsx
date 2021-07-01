@@ -28,15 +28,38 @@ const Sidebar = (props: any) => {
       lng: details.longitude,
     };
 
+    let sidebarContainer: any = document.querySelector(".sidebar");
+    setTimeout(() => {
+      sidebarContainer.scroll({ top: 0, behavior: "smooth" });
+    }, 200);
+
     localStorage.coordinates = JSON.stringify(detailCoordinates);
     props.setCoordinates(detailCoordinates);
     selectSite(details);
     setScreen("details");
+
+    // set the pointer to active state when an event is selected
+    let markerItem: any = document.querySelector(`#mk-${details.id}`);
+    let currentActiveMarker: any = document.querySelector(".active-marker");
+
+    currentActiveMarker?.classList.remove("active-marker");
+
+    // setTimeout(() => {
+    if (markerItem) {
+      markerItem.classList.add("active-marker");
+    }
+    // }, 200);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (props.selectedArea) {
+      viewDetails(props.selectedArea);
+    }
+  }, [props.selectedArea]);
 
   return (
     <>
@@ -50,12 +73,14 @@ const Sidebar = (props: any) => {
         {screen === "research" && (
           <DetailsScreen setScreen={setScreen} title="Notebooks">
             <h1>Research</h1>
+            <p>Dive deeper and learn how this project was built.</p>
           </DetailsScreen>
         )}
 
         {screen === "about" && (
           <DetailsScreen setScreen={setScreen} title="About the Project">
             <h1>About the project</h1>
+            <p>Just some small details and information about the project</p>
           </DetailsScreen>
         )}
 
@@ -85,6 +110,7 @@ const Sidebar = (props: any) => {
                 >
                   NOTEBOOKS
                 </span>
+
                 <span
                   onClick={() => {
                     setScreen("about");

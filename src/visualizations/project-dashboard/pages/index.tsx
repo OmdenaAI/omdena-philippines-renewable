@@ -6,6 +6,7 @@ import { startPageLoad, stopPageLoad, Toast } from "../components/Utils";
 
 const Index = () => {
   const [coordinates, setCoordinates] = useState(null);
+  const [selectedArea, selectArea] = useState(null);
 
   useEffect(() => {
     startPageLoad();
@@ -19,10 +20,15 @@ const Index = () => {
     <>
       <Layout>
         <div className="grid-wrapper fade-in" />
-        <Sidebar coordinates={coordinates} setCoordinates={setCoordinates} />
+        <Sidebar
+          coordinates={coordinates}
+          setCoordinates={setCoordinates}
+          selectedArea={selectedArea}
+        />
         <MapInterface
           coordinates={coordinates}
           setCoordinates={setCoordinates}
+          selectArea={selectArea}
         />
       </Layout>
     </>
