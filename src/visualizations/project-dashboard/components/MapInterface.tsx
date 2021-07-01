@@ -38,9 +38,17 @@ const MapInterface = (props: any) => {
           elx.className = `marker-location-update lu-${index}`;
           elx.id = `mxu-${guid()}`;
           elx.innerHTML = `
-          <div class="map-marker ${nmarker.category.replace(" ", "")}">
-          <div class="marker-dot"></div>
+
+          <div class="map-marker">
+          <div class="marker-info">
+          <div class="marker-info-content">
+            <span>${nmarker.facility_name}</span>
+            <small>${nmarker.municipality}</small>
+            </div>
+          <div class="info-point"></div>
           </div>
+          <div class="marker ${nmarker.category.replace(" ", "")}"></div>
+        </div>
           `;
           new mapboxgl.Marker(elx)
             .setLngLat([nmarker.longitude, nmarker.latitude])

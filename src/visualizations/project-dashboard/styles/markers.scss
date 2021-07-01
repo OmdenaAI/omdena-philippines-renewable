@@ -1,60 +1,121 @@
 .map-marker {
-  $size: 10px;
-  height: $size;
-  width: $size;
-  border: 0.1px solid #fff;
-  // box-shadow: rgba(155, 240, 229, 0.897) 0px 1px 0px,
-  //   rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(188, 238, 245, 0.945) 0px 16px 48px;
-  // opacity: 0.7;
-  transform: rotate(40deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 
-  &.Solar {
-    background: rgb(113, 241, 113);
+  .marker-info {
+    display: none;
+    position: absolute;
+    width: auto;
+    margin-top: -90px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+  }
 
-    transform: none;
-    $size: 15px;
-    height: $size;
-    width: $size;
-    border-radius: 100%;
+  .marker-info-content {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 4px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    position: relative;
+    // position: absolute;
+    // width: 250px;
+    // top: -100px;
+    // left: -50px;
+    z-index: 3;
+    // display: none;
 
-    opacity: 1;
-    transition: 0.3s;
-
-    &:hover {
-      transform: scale(10.2);
-      opacity: 0.3;
-      transition: 0.3s;
-      // border-radius: 0px;
-      // border: 0.00000001px dashed #fff;
-      border: none;
+    span {
+      display: block;
     }
   }
 
-  &.Hydroelectric {
-    background: rgb(59, 194, 248);
+  .info-point {
+    background: #fff;
+    height: 15px;
+    width: 20px;
+    clip-path: polygon(100% 0, 0 0, 52% 100%);
+    position: relative;
+    top: -20px;
+    z-index: 2;
   }
 
-  &.Wind {
-    background: rgb(59, 70, 226);
+  .marker {
+    $size: 10px;
+    height: $size;
+    width: $size;
+    border: 0.1px solid #fff;
+    // box-shadow: rgba(155, 240, 229, 0.897) 0px 1px 0px,
+    //   rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(188, 238, 245, 0.945) 0px 16px 48px;
+    // opacity: 0.7;
+    transform: rotate(40deg);
+
+    &.Solar {
+      background: rgb(113, 241, 113);
+
+      transform: none;
+      $size: 15px;
+      height: $size;
+      width: $size;
+      border-radius: 100%;
+
+      opacity: 1;
+      transition: 0.3s;
+      z-index: 1;
+
+      &:hover {
+        opacity: 0.3;
+        transition: 0.3s;
+        // border-radius: 0px;
+        // border: 0.00000001px dashed #fff;
+        cursor: pointer;
+        border: none;
+      }
+    }
+
+    &.Hydroelectric {
+      background: rgb(59, 194, 248);
+    }
+
+    &.Wind {
+      background: rgb(59, 70, 226);
+    }
+
+    &.Oil-Based {
+      background: rgb(226, 84, 59);
+    }
+
+    &.Biomass {
+      background: rgb(233, 170, 241);
+    }
+
+    &.NaturalGas {
+      background: rgb(181, 201, 96);
+    }
+
+    &.Geothermal {
+      background: rgb(245, 209, 130);
+    }
+
+    &.Coal {
+      background: rgb(77, 64, 37);
+    }
   }
 
-  &.Oil-Based {
-    background: rgb(226, 84, 59);
-  }
-
-  &.Biomass {
-    background: rgb(233, 170, 241);
-  }
-
-  &.NaturalGas {
-    background: rgb(181, 201, 96);
-  }
-
-  &.Geothermal {
-    background: rgb(245, 209, 130);
-  }
-
-  &.Coal {
-    background: rgb(77, 64, 37);
+  &:hover {
+    .marker-info {
+      display: flex;
+    }
+    .marker {
+      &.Solar {
+        border: 0px;
+        opacity: 0.3;
+        transform: scale(7.3);
+      }
+    }
   }
 }
