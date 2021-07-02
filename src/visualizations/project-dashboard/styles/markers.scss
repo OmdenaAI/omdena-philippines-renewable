@@ -1,3 +1,38 @@
+// marker colors
+
+.Solar {
+  background: rgb(248, 128, 59);
+}
+
+.Hydroelectric {
+  background: rgb(59, 194, 248);
+}
+
+.Wind {
+  background: rgb(59, 70, 226);
+}
+
+.Oil-Based {
+  background: rgb(226, 84, 59);
+}
+
+.Biomass {
+  background: rgb(233, 170, 241);
+}
+
+.NaturalGas {
+  background: rgb(181, 201, 96);
+}
+
+.Geothermal {
+  background: rgb(245, 209, 130);
+}
+
+.Coal {
+  background: rgb(77, 64, 37);
+}
+
+// marker styles
 .map-marker {
   display: flex;
   flex-direction: column;
@@ -63,10 +98,6 @@
     // opacity: 0.7;
     transform: rotate(40deg);
 
-    &.Solar {
-      background: rgb(248, 128, 59);
-    }
-
     &.Off-Grid {
       background: rgb(113, 241, 113) !important;
       transform: none;
@@ -86,34 +117,6 @@
         // border: 0.00000001px dashed #fff;
         cursor: pointer;
       }
-    }
-
-    &.Hydroelectric {
-      background: rgb(59, 194, 248);
-    }
-
-    &.Wind {
-      background: rgb(59, 70, 226);
-    }
-
-    &.Oil-Based {
-      background: rgb(226, 84, 59);
-    }
-
-    &.Biomass {
-      background: rgb(233, 170, 241);
-    }
-
-    &.NaturalGas {
-      background: rgb(181, 201, 96);
-    }
-
-    &.Geothermal {
-      background: rgb(245, 209, 130);
-    }
-
-    &.Coal {
-      background: rgb(77, 64, 37);
     }
   }
 
@@ -143,6 +146,59 @@
         $size: 120px;
         height: $size;
         width: $size;
+      }
+    }
+  }
+}
+
+// marker legends
+
+.marker-legends {
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.486);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  color: #fff;
+  right: 20px;
+  top: 20px;
+  border-radius: 7px;
+  z-index: 3;
+
+  small {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  ul {
+    border-top: 0.3px solid rgba(221, 221, 221, 0.644);
+    margin-top: 10px;
+    padding-left: 0px;
+    list-style: none;
+
+    li {
+      font-size: 13px;
+      display: flex;
+      padding-bottom: 4px;
+
+      .label-icon {
+        $size: 10px;
+        height: $size;
+        width: $size;
+        margin-right: 8px;
+        position: relative;
+        bottom: -5px;
+        transform: rotate(40deg);
+        border: 0.3px solid #fff;
+
+        &.Off-Grid {
+          bottom: -4px;
+          border-radius: 100%;
+          $size: 12px;
+          height: $size;
+          width: $size;
+          background: rgb(113, 241, 113) !important;
+        }
       }
     }
   }

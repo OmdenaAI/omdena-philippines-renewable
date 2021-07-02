@@ -20,7 +20,9 @@ const Sidebar = (props: any) => {
 
       // trigger marker render
       let markerTrigger: any = document.getElementById("load-markers");
-      markerTrigger.click();
+      if (markerTrigger) {
+        markerTrigger.click();
+      }
     });
   };
 
@@ -31,9 +33,7 @@ const Sidebar = (props: any) => {
     };
 
     let sidebarContainer: any = document.querySelector(".sidebar");
-    setTimeout(() => {
-      sidebarContainer.scroll({ top: 0, behavior: "smooth" });
-    }, 200);
+    sidebarContainer.scroll({ top: 0 });
 
     localStorage.coordinates = JSON.stringify(detailCoordinates);
     props.setCoordinates(detailCoordinates);

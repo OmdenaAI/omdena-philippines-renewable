@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import MapInterface from "../components/MapInterface";
 import Sidebar from "../components/Sidebar";
 import { startPageLoad, stopPageLoad, Toast } from "../components/Utils";
+import MarkerLegends from "../styles/MarkerLegends";
 
 const Index = () => {
   const [coordinates, setCoordinates] = useState(null);
@@ -25,6 +26,7 @@ const Index = () => {
           setCoordinates={setCoordinates}
           selectedArea={selectedArea}
         />
+        <MarkerLegends />
         <MapInterface
           coordinates={coordinates}
           setCoordinates={setCoordinates}
