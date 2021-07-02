@@ -27,11 +27,11 @@ const Index = () => {
           selectedArea={selectedArea}
         />
         <MarkerLegends />
-        <MapInterface
+        {/* <MapInterface
           coordinates={coordinates}
           setCoordinates={setCoordinates}
           selectArea={selectArea}
-        />
+        /> */}
       </Layout>
     </>
   );

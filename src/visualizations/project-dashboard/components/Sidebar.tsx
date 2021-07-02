@@ -90,7 +90,12 @@ const Sidebar = (props: any) => {
           <>
             <div className="sidebar-navigation">
               <div className="top-bar">
-                <img src="/images/omdena-ph.png" />
+                <a
+                  href="https://www.linkedin.com/groups/13967597"
+                  target="_blank"
+                >
+                  <img src="/images/omdena-ph.png" />
+                </a>
                 <div className="mt-1 mr-2 d-flex">
                   <input
                     type="text"
@@ -104,7 +109,7 @@ const Sidebar = (props: any) => {
                 </div>
               </div>
               <div className="nav-links">
-                <span className="active">DATASET</span>
+                <span className="active">Dataset</span>
                 <span
                   onClick={() => {
                     setScreen("research");

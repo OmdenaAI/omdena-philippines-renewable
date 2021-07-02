@@ -1,4 +1,5 @@
 import contributors from "./contributors.json";
+import communityLinks from "./community_links.json";
 
 const AboutTab = () => {
   return (
@@ -21,6 +22,27 @@ const AboutTab = () => {
 
       <div className="contributors">
         {contributors.map((contributor: any, index: number) => {
+          return (
+            <a href={contributor.url} target="_blank">
+              <div className="contributor" key={index}>
+                <img src={contributor.profileImage} className="avatar" />
+                <div className="info">
+                  <span className="name">{contributor.name}</span>
+                  <span className="info">{contributor.info}</span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <br />
+
+      <h2>Join the Community</h2>
+      <p>Learn more about Omdena and Join the community!</p>
+
+      <div className="contributors">
+        {communityLinks.map((contributor: any, index: number) => {
           return (
             <a href={contributor.url} target="_blank">
               <div className="contributor" key={index}>
