@@ -40,13 +40,15 @@ const MapInterface = (props: any) => {
           var elx = document.createElement("div");
           elx.className = `marker-location-update lu-${index}`;
           elx.onclick = () => {
-            if (nmarker.category === "Solar") {
+            if (nmarker.connection_type === "Off-Grid") {
               props.selectArea(nmarker);
             }
           };
           elx.innerHTML = `
 
-          <div class="map-marker" id="mk-${nmarker.id}">
+          <div class="map-marker ${nmarker.connection_type}" id="mk-${
+            nmarker.id
+          }">
           <div class="marker-info">
           <div class="marker-info-content">
             <span>${nmarker.facility_name}</span>
@@ -54,7 +56,9 @@ const MapInterface = (props: any) => {
             </div>
           <div class="info-point"></div>
           </div>
-          <div class="marker ${nmarker.category.replace(" ", "")}"></div>
+          <div class="marker ${nmarker.category.replace(" ", "")}   ${
+            nmarker.connection_type
+          }"></div>
         </div>
           `;
           new mapboxgl.Marker(elx)

@@ -11,7 +11,9 @@ const Sidebar = (props: any) => {
 
   const fetchData = () => {
     axios.get("/api/doe_dataset").then((res: any) => {
-      let solarAreas = res.data.filter((x: any) => x.category === "Solar");
+      let solarAreas = res.data.filter(
+        (x: any) => x.connection_type === "Off-Grid"
+      );
       setAreas(solarAreas);
 
       setGlobalMapdata(res.data);

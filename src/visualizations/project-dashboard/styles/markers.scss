@@ -16,6 +16,14 @@
     z-index: 999;
   }
 
+  &.Off-Grid {
+    z-index: 99;
+
+    .marker-info {
+      margin-top: -40px;
+    }
+  }
+
   .marker-info-content {
     background: #fff;
     font-family: Arial, Helvetica, sans-serif;
@@ -56,8 +64,11 @@
     transform: rotate(40deg);
 
     &.Solar {
-      background: rgb(113, 241, 113);
+      background: rgb(248, 128, 59);
+    }
 
+    &.Off-Grid {
+      background: rgb(113, 241, 113) !important;
       transform: none;
       $size: 15px;
       height: $size;
@@ -69,12 +80,11 @@
       z-index: 1;
 
       &:hover {
-        opacity: 0.3;
+        // opacity: 0.3;
         transition: 0.3s;
         // border-radius: 0px;
         // border: 0.00000001px dashed #fff;
         cursor: pointer;
-        border: none;
       }
     }
 
@@ -112,10 +122,12 @@
       display: flex;
     }
     .marker {
-      &.Solar {
-        border: 0px;
+      &.Off-Grid {
+        border: 2px solid rgb(252, 252, 252);
         opacity: 0.3;
-        transform: scale(7.3);
+        $size: 120px;
+        height: $size;
+        width: $size;
       }
     }
   }
@@ -125,10 +137,12 @@
       display: flex;
     }
     .marker {
-      &.Solar {
-        border: 0px;
+      &.Off-Grid {
+        border: 2px solid rgb(253, 253, 253);
         opacity: 0.3;
-        transform: scale(7.3);
+        $size: 120px;
+        height: $size;
+        width: $size;
       }
     }
   }
