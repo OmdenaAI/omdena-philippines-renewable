@@ -75,7 +75,7 @@ const Sidebar = (props: any) => {
         )}
 
         {screen === "research" && (
-          <DetailsScreen setScreen={setScreen} title="Notebooks">
+          <DetailsScreen setScreen={setScreen} title="Research">
             <ReasearchTab />
           </DetailsScreen>
         )}
