@@ -9,4 +9,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     x.id = guid();
   });
   res.send(dataset);
+  return req;
 };

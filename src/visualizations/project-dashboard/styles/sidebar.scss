@@ -190,6 +190,7 @@
     justify-content: left;
     background: #0b2758;
     position: sticky;
+    border: 0px;
     box-shadow: -1px 4px 11px 3px rgba(172, 188, 231, 0.527);
     top: -1px;
     z-index: 2;
@@ -214,6 +215,12 @@
       top: 8px;
     }
   }
+
+  p {
+    font-size: 14px;
+    color: rgb(58, 56, 56);
+    font-weight: 400;
+  }
 }
 
 // infocard
@@ -228,6 +235,47 @@
     small {
       font-weight: 700;
       text-transform: uppercase;
+    }
+  }
+}
+
+// contributors
+
+.contributors {
+  display: flex;
+  flex-direction: column;
+  margin-top: -13px;
+
+  .contributor {
+    display: flex;
+    border-bottom: 0.3px solid #ddd;
+    padding: 10px 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background: rgba(221, 221, 221, 0.336);
+    }
+
+    img {
+      margin-right: 10px;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        font-weight: 600;
+        font-size: 15px;
+        color: rgba(27, 38, 85, 0.966);
+      }
+
+      .info {
+        font-size: 13px;
+        position: relative;
+        top: 2px;
+        color: rgb(34, 88, 170);
+      }
     }
   }
 }

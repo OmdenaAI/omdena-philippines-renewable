@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DetailsScreen from "./DetailsScreen";
+import ReasearchTab from "./ResearchTab";
+import AboutTab from "./AboutTab";
 import SiteDetails from "./SiteDetails";
 import { setGlobalMapdata } from "./Utils";
 
@@ -74,15 +76,13 @@ const Sidebar = (props: any) => {
 
         {screen === "research" && (
           <DetailsScreen setScreen={setScreen} title="Notebooks">
-            <h1>Research</h1>
-            <p>Dive deeper and learn how this project was built.</p>
+            <ReasearchTab />
           </DetailsScreen>
         )}
 
         {screen === "about" && (
           <DetailsScreen setScreen={setScreen} title="About the Project">
-            <h1>About the project</h1>
-            <p>Just some small details and information about the project</p>
+            <AboutTab />
           </DetailsScreen>
         )}
 
@@ -110,7 +110,7 @@ const Sidebar = (props: any) => {
                     setScreen("research");
                   }}
                 >
-                  NOTEBOOKS
+                  Research
                 </span>
 
                 <span

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import { currentLocation, fetchGlobalMapdata, guid, MovesStyle } from "./Utils";
+import { currentLocation, fetchGlobalMapdata, MovesStyle } from "./Utils";
 
 // replace with your own access token from Mapbox.
 mapboxgl.accessToken =

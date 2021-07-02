@@ -7,4 +7,5 @@ const API_INFO = {
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   res.send(API_INFO);
+  return req;
 };
