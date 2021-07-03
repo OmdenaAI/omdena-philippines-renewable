@@ -11,6 +11,13 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       x.suggested_area = true;
     }
   });
+
+  // sort the dataset to prioritize lower operating hours
+  dataset = dataset.sort(
+    (a: any, b: any) =>
+      parseFloat(a.operating_hours) - parseFloat(b.operating_hours)
+  );
+
   res.send(dataset);
   return req;
 };

@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import { currentLocation, fetchGlobalMapdata, MovesStyle } from "./Utils";
+import {
+  currentLocation,
+  fetchGlobalMapdata,
+  isMobile,
+  MovesStyle,
+} from "./Utils";
 
 // replace with your own access token from Mapbox.
 mapboxgl.accessToken =
@@ -81,10 +86,12 @@ const MapInterface = (props: any) => {
 
       // ease map
 
-      map.easeTo({
-        padding: { left: 320 },
-        duration: 1000,
-      });
+      if (!isMobile()) {
+        map.easeTo({
+          padding: { left: 320 },
+          duration: 1000,
+        });
+      }
     };
 
     // bind events to trigger buttons

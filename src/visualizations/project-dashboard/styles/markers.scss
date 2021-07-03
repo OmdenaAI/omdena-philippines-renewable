@@ -89,10 +89,11 @@
   }
 
   &.suggested-area {
-    z-index: 99;
+    // z-index: 99;
 
     .marker-info {
       margin-top: -80px;
+      z-index: 999 !important;
     }
 
     .marker-info-content {
@@ -115,15 +116,12 @@
     height: $size;
     width: $size;
     border: 0.1px solid #fff;
-    // box-shadow: rgba(155, 240, 229, 0.897) 0px 1px 0px,
-    //   rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(188, 238, 245, 0.945) 0px 16px 48px;
-    // opacity: 0.7;
     transform: rotate(40deg);
 
     &.suggested-area {
       background: rgb(113, 241, 113) !important;
       transform: none;
-      $size: 15px;
+      $size: 12px;
       height: $size;
       width: $size;
       border-radius: 100%;
@@ -223,5 +221,9 @@
         }
       }
     }
+  }
+
+  @media (max-width: 600px) {
+    display: none;
   }
 }

@@ -142,6 +142,8 @@ const Sidebar = (props: any) => {
                 </span>
               </div>
 
+              <h4>Sorted based on relevance</h4>
+
               {areas &&
                 areas.map((data: any, index: number) => {
                   return (

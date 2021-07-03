@@ -41,6 +41,15 @@
       }
     }
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    left: 0px;
+    top: unset;
+    bottom: 0px;
+    height: 50vh;
+    border-radius: 8px 8px 0px 0px;
+  }
 }
 
 .sidebar-navigation {
