@@ -11,6 +11,12 @@ const Sidebar = (props: any) => {
   const [screen, setScreen] = useState<string>("home");
   const [selectedSite, selectSite] = useState<any>(null);
 
+  const sidebarScrollTop = () => {
+    let sidebarContainer: any = document.querySelector(".sidebar");
+
+    sidebarContainer.scroll({ top: 0 });
+  };
+
   const fetchData = () => {
     axios.get("/api/doe_dataset").then((res: any) => {
       let solarAreas = res.data.filter(
@@ -34,8 +40,7 @@ const Sidebar = (props: any) => {
       lng: details.longitude,
     };
 
-    let sidebarContainer: any = document.querySelector(".sidebar");
-    sidebarContainer.scroll({ top: 0 });
+    sidebarScrollTop();
 
     localStorage.coordinates = JSON.stringify(detailCoordinates);
     props.setCoordinates(detailCoordinates);
@@ -113,6 +118,7 @@ const Sidebar = (props: any) => {
                 <span
                   onClick={() => {
                     setScreen("research");
+                    sidebarScrollTop();
                   }}
                 >
                   Research
@@ -121,6 +127,7 @@ const Sidebar = (props: any) => {
                 <span
                   onClick={() => {
                     setScreen("about");
+                    sidebarScrollTop();
                   }}
                 >
                   About the project

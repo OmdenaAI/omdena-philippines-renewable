@@ -7,6 +7,9 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   let dataset: any = [...DOE_dataset];
   dataset.forEach((x: any) => {
     x.id = guid();
+    if (x.connection_type === "Off-Grid") {
+      x.suggested_area = true;
+    }
   });
   res.send(dataset);
   return req;
