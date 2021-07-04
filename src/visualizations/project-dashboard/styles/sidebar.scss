@@ -41,6 +41,15 @@
       }
     }
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    left: 0px;
+    top: unset;
+    bottom: 0px;
+    height: 50vh;
+    border-radius: 8px 8px 0px 0px;
+  }
 }
 
 .sidebar-navigation {
@@ -95,7 +104,32 @@
       rgba(255, 255, 255, 0.315) 20%,
       rgba(8, 8, 8, 0.979)
     ),
-    url("https://media.philstar.com/photos/2019/07/06/bus6-solar-farm_2019-07-06_19-36-37.jpg")
+    url("https://images.unsplash.com/photo-1613665813446-82a78c468a1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1039&q=80")
+      no-repeat;
+  background-size: cover;
+  height: 150px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px 25px;
+  display: flex;
+
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
+  margin-bottom: 20px;
+
+  span {
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+.research-cover-card {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.315) 20%,
+      rgba(8, 8, 8, 0.979)
+    ),
+    url("https://images.unsplash.com/photo-1501526029524-a8ea952b15be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80")
       no-repeat;
   background-size: cover;
   height: 150px;

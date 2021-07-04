@@ -11,6 +11,12 @@ const Sidebar = (props: any) => {
   const [screen, setScreen] = useState<string>("home");
   const [selectedSite, selectSite] = useState<any>(null);
 
+  const sidebarScrollTop = () => {
+    let sidebarContainer: any = document.querySelector(".sidebar");
+
+    sidebarContainer.scroll({ top: 0 });
+  };
+
   const fetchData = () => {
     axios.get("/api/doe_dataset").then((res: any) => {
       let solarAreas = res.data.filter(
@@ -34,8 +40,7 @@ const Sidebar = (props: any) => {
       lng: details.longitude,
     };
 
-    let sidebarContainer: any = document.querySelector(".sidebar");
-    sidebarContainer.scroll({ top: 0 });
+    sidebarScrollTop();
 
     localStorage.coordinates = JSON.stringify(detailCoordinates);
     props.setCoordinates(detailCoordinates);
@@ -75,7 +80,7 @@ const Sidebar = (props: any) => {
         )}
 
         {screen === "research" && (
-          <DetailsScreen setScreen={setScreen} title="Notebooks">
+          <DetailsScreen setScreen={setScreen} title="Research">
             <ReasearchTab />
           </DetailsScreen>
         )}
@@ -90,7 +95,12 @@ const Sidebar = (props: any) => {
           <>
             <div className="sidebar-navigation">
               <div className="top-bar">
-                <img src="/images/omdena-ph.png" />
+                <a
+                  href="https://www.linkedin.com/groups/13967597"
+                  target="_blank"
+                >
+                  <img src="/images/omdena-ph.png" />
+                </a>
                 <div className="mt-1 mr-2 d-flex">
                   <input
                     type="text"
@@ -104,10 +114,11 @@ const Sidebar = (props: any) => {
                 </div>
               </div>
               <div className="nav-links">
-                <span className="active">DATASET</span>
+                <span className="active">Dataset</span>
                 <span
                   onClick={() => {
                     setScreen("research");
+                    sidebarScrollTop();
                   }}
                 >
                   Research
@@ -116,6 +127,7 @@ const Sidebar = (props: any) => {
                 <span
                   onClick={() => {
                     setScreen("about");
+                    sidebarScrollTop();
                   }}
                 >
                   About the project
@@ -129,6 +141,8 @@ const Sidebar = (props: any) => {
                   Potential Sites for Solar Power Stations in the Philippines
                 </span>
               </div>
+
+              <h4>Sorted based on relevance</h4>
 
               {areas &&
                 areas.map((data: any, index: number) => {

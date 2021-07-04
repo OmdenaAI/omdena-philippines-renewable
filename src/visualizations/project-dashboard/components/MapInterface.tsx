@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import { currentLocation, fetchGlobalMapdata, MovesStyle } from "./Utils";
+import {
+  currentLocation,
+  fetchGlobalMapdata,
+  isMobile,
+  MovesStyle,
+} from "./Utils";
 
 // replace with your own access token from Mapbox.
 mapboxgl.accessToken =
@@ -46,20 +51,32 @@ const MapInterface = (props: any) => {
           };
           elx.innerHTML = `
 
-          <div class="map-marker ${nmarker.connection_type}" id="mk-${
-            nmarker.id
-          }">
-          <div class="marker-info">
+          <div class="map-marker ${
+            nmarker.suggested_area ? "suggested-area" : ""
+          }" id="mk-${nmarker.id}">
+            <div class="marker-info">
           <div class="marker-info-content">
-            <span>${nmarker.facility_name}</span>
-            <small>${nmarker.municipality}</small>
-            </div>
-          <div class="info-point"></div>
+          <div class="content">
+          <span>${nmarker.facility_name}</span>
+          <small>${nmarker.municipality}</small>
           </div>
-          <div class="marker ${nmarker.category.replace(" ", "")}   ${
-            nmarker.connection_type
-          }"></div>
-        </div>
+
+            <small class="badge ${
+              nmarker.suggested_area ? "badge-success" : "badge-primary"
+            } m-2">${
+            nmarker.suggested_area
+              ? "Suggested Area"
+              : `${nmarker.category} Powerplant`
+          }</small>
+           </div>
+           <div class="info-point"></div>
+           </div>
+            <div class="marker ${
+              nmarker.suggested_area
+                ? "suggested-area"
+                : nmarker.category.replace(" ", "")
+            }"></div>
+            </div>
           `;
           new mapboxgl.Marker(elx)
             .setLngLat([nmarker.longitude, nmarker.latitude])
@@ -69,10 +86,12 @@ const MapInterface = (props: any) => {
 
       // ease map
 
-      map.easeTo({
-        padding: { left: 320 },
-        duration: 1000,
-      });
+      if (!isMobile()) {
+        map.easeTo({
+          padding: { left: 320 },
+          duration: 1000,
+        });
+      }
     };
 
     // bind events to trigger buttons
