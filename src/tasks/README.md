@@ -12,5 +12,5 @@ Note : Please Follow the below guidelines to create task folders
 | Task No| Task Name | Details |
 |-|-|-|
 |1|         |         |
-|2|         |         |
+|2|task-2-estimate-energy-demand         |Estimate energy demand by finding villages not lit up at nighttime         |
 |3|         |         |
