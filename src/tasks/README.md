@@ -14,3 +14,4 @@ Note : Please Follow the below guidelines to create task folders
 |1|         |         |
 |2|task-2-estimate-energy-demand         |Estimate energy demand by finding villages not lit up at nighttime         |
 |3|         |         |
+|4|task-4-solar-irradiance-data-extraction    |Extracted data per barangay related to solar irradiance |
