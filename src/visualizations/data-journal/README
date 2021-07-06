@@ -1,0 +1,4 @@
+Project directory:
+
+- `homepage.py` serves as the main entry point for the application.
+- `pages` is a directory containing all the pages of the application to be linked through `homepage.py`.
