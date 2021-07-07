@@ -11,6 +11,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     if (x.connection_type === "Off-Grid") {
       x.suggested_area = true;
     }
+
+    if(parseInt(x.operating_hours) < 12){
+      x.suggested_area = true; 
+    }
   });
 
 
