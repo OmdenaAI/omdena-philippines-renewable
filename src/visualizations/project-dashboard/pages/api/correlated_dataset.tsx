@@ -1,0 +1,36 @@
+import type { NextApiRequest, NextApiResponse } from "next";
+import { guid } from "../../components/Utils";
+import DOE_dataset from "./correlated_data.json";
+import Fuse from "fuse.js"
+
+export default (req: NextApiRequest, res: NextApiResponse) => {
+  // add unique id to dataset
+  let dataset: any = [...DOE_dataset];
+  dataset.forEach((x: any) => {
+    x.id = guid();
+    if (x.connection_type === "Off-Grid") {
+      x.suggested_area = true;
+    }
+  });
+
+
+
+  // sort the dataset to prioritize lower operating hours
+  dataset = dataset.sort(
+    (a: any, b: any) =>
+      parseFloat(a.operating_hours) - parseFloat(b.operating_hours)
+  );
+
+  // handle search query
+  let searchQuery:any = req.query.search; 
+  
+  if(searchQuery && searchQuery.trim() !== ""){
+
+      dataset = null;
+  }
+
+  res.send(dataset);
+  return req;
+};
+
+

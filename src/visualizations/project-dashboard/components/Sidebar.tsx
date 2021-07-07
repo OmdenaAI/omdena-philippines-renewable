@@ -18,9 +18,9 @@ const Sidebar = (props: any) => {
   };
 
   const fetchData = () => {
-    axios.get("/api/doe_dataset").then((res: any) => {
+    axios.get("/api/correlated_dataset").then((res: any) => {
       let solarAreas = res.data.filter(
-        (x: any) => x.connection_type === "Off-Grid"
+        (x: any) => x.suggested_area === true
       );
       setAreas(solarAreas);
 
