@@ -4,12 +4,13 @@ import DetailsScreen from "./DetailsScreen";
 import ReasearchTab from "./ResearchTab";
 import AboutTab from "./AboutTab";
 import SiteDetails from "./SiteDetails";
-import { setGlobalMapdata } from "./Utils";
+import { setGlobalMapdata, startPageLoad, stopPageLoad } from "./Utils";
 
 const Sidebar = (props: any) => {
   const [areas, setAreas] = useState<any>(null);
   const [screen, setScreen] = useState<string>("home");
   const [selectedSite, selectSite] = useState<any>(null);
+  const [query, setQuery] = useState<any>("")
 
   const sidebarScrollTop = () => {
     let sidebarContainer: any = document.querySelector(".sidebar");
@@ -19,10 +20,10 @@ const Sidebar = (props: any) => {
 
   const fetchData = () => {
     axios.get("/api/correlated_dataset").then((res: any) => {
-      let solarAreas = res.data.filter(
+      let suggestedAreas = res.data.filter(
         (x: any) => x.suggested_area === true
       );
-      setAreas(solarAreas);
+      setAreas(suggestedAreas);
 
       setGlobalMapdata(res.data);
 
@@ -59,6 +60,17 @@ const Sidebar = (props: any) => {
     }
     // }, 200);
   };
+
+  const searchDataset = (search_query:string) => {
+    startPageLoad()
+    axios.get(`/api/correlated_dataset?search=${search_query}`).then((res: any) => {
+      let suggestedAreas = res.data.filter(
+        (x: any) => x.suggested_area === true
+      );
+      setAreas(suggestedAreas);
+     stopPageLoad()
+    });
+  }
 
   useEffect(() => {
     fetchData();
@@ -107,8 +119,18 @@ const Sidebar = (props: any) => {
                     placeholder="Search Places.."
                     className="form-control"
                     id="search-input"
+                    onKeyUp={(e:any)=>{
+                     if(e.key === "Enter"){
+                      setQuery(e.target.value)
+                      searchDataset(e.target.value)
+                     }
+                    }}
                   />
-                  <button className="btn btn-default ml-2">
+                  <button className="btn btn-default ml-2" 
+                  onClick={()=>{
+                    searchDataset(query)
+                  }}
+                  >
                     <i className="la la-search" />
                   </button>
                 </div>
@@ -143,6 +165,12 @@ const Sidebar = (props: any) => {
               </div>
 
               <h4>Sorted based on relevance</h4>
+
+              {areas && areas.length === 0 && query.trim() !== "" && (
+                <div className="mt-3 border-top py-3 fade-in-bottom">
+                <h2>No results found.</h2>
+                </div>
+              )}
 
               {areas &&
                 areas.map((data: any, index: number) => {
