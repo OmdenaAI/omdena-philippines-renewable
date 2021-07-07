@@ -15,3 +15,4 @@ Note : Please Follow the below guidelines to create task folders
 |2|task-2-estimate-energy-demand         |Estimate energy demand by finding villages not lit up at nighttime         |
 |3|         |         |
 |4|task-4-solar-irradiance-data-extraction    |Extracted data per barangay related to solar irradiance |
+|4|task-4-cluster-estimated-energy-available   |Trained Models :KMeans, GMM, and DBSCAN to cluster the barangays based on energy availability|
