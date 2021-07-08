@@ -4,7 +4,7 @@ import DetailsScreen from "./DetailsScreen";
 import ReasearchTab from "./ResearchTab";
 import AboutTab from "./AboutTab";
 import SiteDetails from "./SiteDetails";
-import { setGlobalMapdata, startPageLoad, stopPageLoad } from "./Utils";
+import { gaPV, gaScroll, gaUE, setGlobalMapdata, startPageLoad, stopPageLoad } from "./Utils";
 
 const Sidebar = (props: any) => {
   const [areas, setAreas] = useState<any>(null);
@@ -68,12 +68,24 @@ const Sidebar = (props: any) => {
         (x: any) => x.suggested_area === true
       );
       setAreas(suggestedAreas);
+      gaPV("Dataset Search",`/search/${search_query}`)
+    
      stopPageLoad()
     });
   }
 
   useEffect(() => {
     fetchData();
+
+    let sidebarThread:any = document.querySelector(".sidebar")
+     sidebarThread.onscroll= () => {
+       let scroll = sidebarThread.scrollTop
+       if (scroll > 1200 && scroll < 1300) {
+        gaPV("Content Read")
+        gaScroll("Content Read Scroll")
+        gaUE("Engagement","Reading Content")
+      }
+     }
   }, []);
 
   useEffect(() => {

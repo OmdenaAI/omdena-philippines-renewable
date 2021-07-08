@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { gaPV } from "./Utils";
 
 const SiteDetails = (props: any) => {
   const data = props.data;
@@ -7,6 +8,7 @@ const SiteDetails = (props: any) => {
 
   useEffect(() => {
     let sidebarContainer: any = document.querySelector(".sidebar");
+    gaPV(`Site Details`)
     setTimeout(() => {
       sidebarContainer.scroll({ top: 0, behavior: "smooth" });
     }, 200);
