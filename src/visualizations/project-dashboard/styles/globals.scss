@@ -130,3 +130,28 @@ body {
   left: unset !important;
   right: 5px !important;
 }
+
+
+// custom scrollbar css
+
+.sidebar{
+  /* width */
+&::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+&::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+&::-webkit-scrollbar-thumb {
+  background: rgb(95, 166, 247);
+}
+
+/* Handle on hover */
+&::-webkit-scrollbar-thumb:hover {
+  background: rgb(10, 71, 201);
+}
+}

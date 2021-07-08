@@ -39,7 +39,7 @@ const SiteDetails = (props: any) => {
 
       <h3 className="mt-4">Home much energy can be produced with Solar Panels around this area?</h3>
       <p>based on the SolarGIS dataset the mean voltage output of this area is around: </p>
-      <h2 className="text-primary">{data.PVOUT_mean.toFixed(2)} Kw/h</h2>
+      <h2 className="text-primary">{(data.PVOUT_mean/1000).toFixed(2)} MW/h</h2>
 
       <small><strong>What can you do with this amount of power?</strong></small>
 
