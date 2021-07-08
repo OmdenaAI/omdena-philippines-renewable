@@ -69,6 +69,7 @@ const Sidebar = (props: any) => {
       );
       setAreas(suggestedAreas);
       gaPV("Dataset Search",`/search/${search_query}`)
+      gaUE("User Search",`/search/${search_query}`)
     
      stopPageLoad()
     });
@@ -132,8 +133,8 @@ const Sidebar = (props: any) => {
                     className="form-control"
                     id="search-input"
                     onKeyUp={(e:any)=>{
-                     if(e.key === "Enter"){
                       setQuery(e.target.value)
+                     if(e.key === "Enter"){
                       searchDataset(e.target.value)
                      }
                     }}
