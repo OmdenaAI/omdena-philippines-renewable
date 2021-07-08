@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { gaPV } from "./Utils";
 
 const SiteDetails = (props: any) => {
   const data = props.data;
@@ -7,6 +8,7 @@ const SiteDetails = (props: any) => {
 
   useEffect(() => {
     let sidebarContainer: any = document.querySelector(".sidebar");
+    gaPV(`Site Details`)
     setTimeout(() => {
       sidebarContainer.scroll({ top: 0, behavior: "smooth" });
     }, 200);
@@ -35,12 +37,11 @@ const SiteDetails = (props: any) => {
         </span>
       </p>
 
-      <h3 className="mt-4">Power availability of Solar Energy</h3>
-      <p>Power availability in the philippines based on solar irradiance.</p>
-      <img
-        src="https://scontent.fcrk1-1.fna.fbcdn.net/v/t1.15752-9/211617769_962118731276406_4961368663717972900_n.png?_nc_cat=109&ccb=1-3&_nc_sid=ae9488&_nc_ohc=--UELWDLVtMAX-S19Ka&tn=4NS8_AonkdOm5ozy&_nc_ht=scontent.fcrk1-1.fna&oh=c35ebecaeeb91317d840279216b63773&oe=60E4E5F7"
-        className="img-fluid"
-      />
+      <h3 className="mt-4">Home much energy can be produced with Solar Panels around this area?</h3>
+      <p>based on the SolarGIS dataset the mean voltage output of this area is around: </p>
+      <h2 className="text-primary">{data.PVOUT_mean.toFixed(2)} Kw/h</h2>
+
+      <small><strong>What can you do with this amount of power?</strong></small>
 
       <h3 className="mt-5">Addition Information</h3>
 

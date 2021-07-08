@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { guid } from "../../components/Utils";
-import DOE_dataset from "./project_simoy_doe_dataset.json";
+import DOE_dataset from "./doe_v1.json";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   // add unique id to dataset

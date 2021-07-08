@@ -3,6 +3,7 @@ import mapboxgl from "mapbox-gl";
 import {
   currentLocation,
   fetchGlobalMapdata,
+  gaPV,
   isMobile,
   MovesStyle,
 } from "./Utils";
@@ -47,6 +48,7 @@ const MapInterface = (props: any) => {
           elx.onclick = () => {
             if (nmarker.connection_type === "Off-Grid") {
               props.selectArea(nmarker);
+              gaPV("Site Detail View | Map Click",`${nmarker.municipality}`)
             }
           };
           elx.innerHTML = `
@@ -93,6 +95,13 @@ const MapInterface = (props: any) => {
         });
       }
     };
+
+    // detect zooming on map to measure engagement
+    
+      map.on('zoom', function() {
+      // console.log('A zoom event occurred.');
+      });
+    
 
     // bind events to trigger buttons
     let mapJump: any = document.getElementById("mapJump");

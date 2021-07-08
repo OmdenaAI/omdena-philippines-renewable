@@ -15,6 +15,8 @@
     "axios": "^0.21.1",
     "formidable": "^1.2.2",
     "fuse.js": "^6.4.6",
+    "geojson-geometries-lookup": "^0.5.0",
+    "geojson-polygon-center": "^0.0.0",
     "mapbox-gl": "^2.3.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
