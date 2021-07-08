@@ -127,7 +127,7 @@ declare global {
 }
 
 export const gaPV = (title: string, url?: string) => {
-  if (window.gtag && window.location.href !== "http://localhost:3000/") {
+  if (window.gtag && !window.location.href.includes("localhost")) {
     window.gtag("event", "page_view", {
       page_location: window.location.href,
       page_path: url ? url : window.location.pathname,
@@ -137,7 +137,7 @@ export const gaPV = (title: string, url?: string) => {
 };
 
 export const gaScroll = (title: string, url?: string) => {
-  if (window.gtag && window.location.href !== "http://localhost:3000/") {
+  if (window.gtag && !window.location.href.includes("localhost")) {
     window.gtag("event", "scroll", {
       page_location: window.location.href,
       page_path: url ? url : window.location.pathname,
@@ -147,7 +147,7 @@ export const gaScroll = (title: string, url?: string) => {
 };
 
 export const gaUE = (title: string, url?: string) => {
-  if (window.gtag && window.location.href !== "http://localhost:3000/") {
+  if (window.gtag && !window.location.href.includes("localhost")) {
     window.gtag("event", "user_engagement", {
       page_location: window.location.href,
       page_path: url ? url : window.location.pathname,
