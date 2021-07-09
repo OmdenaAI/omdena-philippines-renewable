@@ -43,6 +43,8 @@ export const XrayMapStyle =
 export const MovesStyle =
   "https://raw.githubusercontent.com/jingsam/mapbox-gl-styles/master/Moves-map.json";
 
+export const KeplerStyle = "/keplergl.json";
+
 export const currentLocation = () => {
   if (localStorage.coordinates) {
     return JSON.parse(localStorage.coordinates);

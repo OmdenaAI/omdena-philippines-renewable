@@ -25,6 +25,43 @@ const MapInterface = (props: any) => {
       maxBearing: -65, // bearing in degrees
     });
 
+    map.on("load", () => {
+      map.addSource("energy_demand", {
+        type: "geojson",
+        // Use a URL for the value for the `data` property.
+        data: "/geojson_maps/task2_energy_demand.json",
+      });
+
+      map.addLayer({
+        id: "demand_polygon_lines",
+        type: "line",
+        source: "energy_demand",
+        paint: {
+          "line-color": "#fff",
+          "line-width": 0.3,
+          "line-opacity": 0.5,
+        },
+      });
+
+      map.addLayer({
+        id: "demand-fill",
+        type: "fill",
+        source: "energy_demand",
+        layout: {},
+        paint: {
+          "fill-color": {
+            property: "Response",
+            stops: [
+              [0.2, "red"],
+              [0.4, "orange"],
+              [1, "black"],
+            ],
+          },
+          "fill-opacity": 0.2,
+        },
+      });
+    });
+
     const flytoLocation = () => {
       console.log("dest=>", props.coordinates);
       map.flyTo({
@@ -48,7 +85,7 @@ const MapInterface = (props: any) => {
           elx.onclick = () => {
             if (nmarker.connection_type === "Off-Grid") {
               props.selectArea(nmarker);
-              gaPV("Site Detail View | Map Click",`${nmarker.municipality}`)
+              gaPV("Site Detail View | Map Click", `${nmarker.municipality}`);
             }
           };
           elx.innerHTML = `
@@ -97,11 +134,10 @@ const MapInterface = (props: any) => {
     };
 
     // detect zooming on map to measure engagement
-    
-      map.on('zoom', function() {
+
+    map.on("zoom", function () {
       // console.log('A zoom event occurred.');
-      });
-    
+    });
 
     // bind events to trigger buttons
     let mapJump: any = document.getElementById("mapJump");
