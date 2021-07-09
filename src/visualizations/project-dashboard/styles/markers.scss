@@ -11,7 +11,7 @@
 }
 
 .Oil-Based {
-  background: rgb(226, 84, 59);
+  background: rgb(136, 28, 8);
 }
 
 .Biomass {
@@ -117,6 +117,7 @@
     width: $size;
     border: 0.1px solid #fff;
     transform: rotate(40deg);
+    // opacity: 0.7;
 
     &.suggested-area {
       background: rgb(113, 241, 113) !important;
