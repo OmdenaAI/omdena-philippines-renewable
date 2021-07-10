@@ -39,7 +39,7 @@ const MapInterface = (props: any) => {
         paint: {
           "line-color": "#fff",
           "line-width": 0.3,
-          "line-opacity": 0.4,
+          "line-opacity": 0.3,
         },
       });
 
@@ -52,7 +52,7 @@ const MapInterface = (props: any) => {
           "fill-color": {
             property: "Response",
             stops: [
-              [0.3, "#66ffff"],
+              [0.2, "#66ffff"],
               [0.4, "#00ccff"],
               [1, "transparent"],
             ],
