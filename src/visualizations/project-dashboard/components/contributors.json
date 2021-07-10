@@ -1,26 +1,68 @@
 [
   {
-    "name": "Cyndi Ignacio",
-    "info": "GIS Developer | Philippines",
-    "url": "",
-    "profileImage": "https://avatars.dicebear.com/api/identicon/12323.svg"
-  },
-  {
     "name": "Bryce Mercines",
     "info": "Software Engineer | Philippines",
-    "url": "https://avatars.githubusercontent.com/u/29462205?s=400&u=2dfd08d765296669d4fc10ebecfc80a424298b75&v=4",
-    "profileImage": "https://media-exp1.licdn.com/dms/image/C5103AQGR32COqQ1khw/profile-displayphoto-shrink_800_800/0/1574173535778?e=1631145600&v=beta&t=7yaUWhq3tRVsbquJB9pHIK-BQqoAYgf94iZsIXQZ4K4"
+    "url": "https://www.linkedin.com/in/brycemercines/",
+    "profileImage": "https://avatars.githubusercontent.com/u/29462205?v=4"
   },
   {
-    "name": "Arjay Hosmillo",
-    "info": "Data Scientist | Philippines",
-    "url": "",
-    "profileImage": "https://avatars.dicebear.com/api/identicon/123323.svg"
+    "name": "Michael Brian Manuel",
+    "info": "Electrical Engineer | Philippines",
+    "url": "https://www.linkedin.com/in/michael-brian-manuel-4a6017124/",
+    "profileImage": "https://avatars.githubusercontent.com/u/41263394?v=4"
   },
   {
-    "name": "Joma Miñoza",
+    "name": "Arjay Ronald Hosmillo",
+    "info": "Chemical Engineer / Environmental, Product Compliance and Data Viz Consultant | Philippines",
+    "url": "https://www.linkedin.com/in/arjayhosmillo/",
+    "profileImage": "https://avatars.githubusercontent.com/u/52721741?v=4"
+  },
+  {
+    "name": "Andrea Marie Maderazo",
     "info": "Data Scientist | Philippines",
-    "url": "",
-    "profileImage": "https://avatars.dicebear.com/api/identicon/003323.svg"
+    "url": "https://www.linkedin.com/in/andreamariemaderazo/",
+    "profileImage": "https://avatars.githubusercontent.com/u/68307127?v=4"
+  },
+  {
+    "name": "Albert Yumol",
+    "info": "Open Sorcerer | Philippines",
+    "url": "https://www.linkedin.com/in/albertyumol/",
+    "profileImage": "https://avatars.githubusercontent.com/u/17405515"
+  },
+  {
+    "name": "Jose Marie Antonio Minoza",
+    "info": "Data Scientist | Philippines",
+    "url": "https://www.linkedin.com/in/jomaminoza/",
+    "profileImage": "https://avatars.githubusercontent.com/u/6972093?v=4"
+  },
+  {
+    "name": "Neil Ruaro",
+    "info": "Student | Philippines",
+    "url": "https://www.linkedin.com/in/eruaro/",
+    "profileImage": "https://avatars.githubusercontent.com/u/69240261?v=4"
+  },
+  {
+    "name": "Dana Redeña",
+    "info": "Data Scientist | Philippines",
+    "url": "https://www.linkedin.com/in/danaredena",
+    "profileImage": "https://avatars.githubusercontent.com/u/25056256?v=4"
+  },
+  {
+    "name": "Cyndi Ignacio",
+    "info": "GIS Developer | Philippines",
+    "url": "https://www.linkedin.com/in/cyndiignacio",
+    "profileImage": "https://avatars.githubusercontent.com/u/18733101"
+  },
+  {
+    "name": "Raphael Bihis",
+    "info": "Software Engineer | Philippines",
+    "url": "https://www.linkedin.com/in/raphybihis",
+    "profileImage": "https://avatars.githubusercontent.com/u/30310576?v=4"
+  },
+  {
+    "name": "Joshua Cortez",
+    "info": "Data Scientist | Philippines",
+    "url": "https://www.linkedin.com/in/joshua-m-cortez/",
+    "profileImage": "https://avatars.githubusercontent.com/u/7113605?v=4"
   }
 ]

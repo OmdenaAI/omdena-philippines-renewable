@@ -12,9 +12,6 @@
   overflow: hidden;
   overflow-y: auto;
 
-
-  
-
   .top-bar {
     padding: 8px 10px;
     width: 100%;
@@ -314,5 +311,30 @@
         color: rgb(34, 88, 170);
       }
     }
+  }
+}
+
+// banner image
+
+.banner-image {
+  position: absolute;
+  left: 0px;
+  top: 55px;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.315) 20%,
+      rgba(8, 8, 8, 0.979)
+    ),
+    url("https://www.build-review.com/wp-content/uploads/2021/02/solar-panels.jpg")
+      no-repeat;
+  background-size: cover;
+  height: 210px;
+  width: 100%;
+  padding: 20px 25px;
+  display: flex;
+
+  span {
+    color: #fff;
+    font-weight: 700;
+    font-size: 25px;
   }
 }

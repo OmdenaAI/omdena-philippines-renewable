@@ -5,7 +5,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 // nprogress css
 
 #nprogress {
@@ -125,33 +124,42 @@ body {
   height: 300px;
 }
 
-.mapboxgl-ctrl-bottom-left{
+.mapboxgl-ctrl-bottom-left {
   bottom: 18px !important;
   left: unset !important;
   right: 5px !important;
 }
 
-
 // custom scrollbar css
 
-.sidebar{
+.sidebar {
   /* width */
-&::-webkit-scrollbar {
-  width: 0px;
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgb(95, 166, 247);
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(10, 71, 201);
+  }
 }
 
-/* Track */
-&::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
+// details
 
-/* Handle */
-&::-webkit-scrollbar-thumb {
-  background: rgb(95, 166, 247);
-}
-
-/* Handle on hover */
-&::-webkit-scrollbar-thumb:hover {
-  background: rgb(10, 71, 201);
-}
+.details-splash {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  margin-bottom: 120px;
 }
