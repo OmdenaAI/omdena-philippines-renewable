@@ -4,13 +4,20 @@ import DetailsScreen from "./DetailsScreen";
 import ReasearchTab from "./ResearchTab";
 import AboutTab from "./AboutTab";
 import SiteDetails from "./SiteDetails";
-import { gaPV, gaScroll, gaUE, setGlobalMapdata, startPageLoad, stopPageLoad } from "./Utils";
+import {
+  gaPV,
+  gaScroll,
+  gaUE,
+  setGlobalMapdata,
+  startPageLoad,
+  stopPageLoad,
+} from "./Utils";
 
 const Sidebar = (props: any) => {
   const [areas, setAreas] = useState<any>(null);
   const [screen, setScreen] = useState<string>("home");
   const [selectedSite, selectSite] = useState<any>(null);
-  const [query, setQuery] = useState<any>("")
+  const [query, setQuery] = useState<any>("");
 
   const sidebarScrollTop = () => {
     let sidebarContainer: any = document.querySelector(".sidebar");
@@ -61,32 +68,34 @@ const Sidebar = (props: any) => {
     // }, 200);
   };
 
-  const searchDataset = (search_query:string) => {
-    startPageLoad()
-    axios.get(`/api/correlated_dataset?search=${search_query}`).then((res: any) => {
-      let suggestedAreas = res.data.filter(
-        (x: any) => x.suggested_area === true
-      );
-      setAreas(suggestedAreas);
-      gaPV("Dataset Search",`/search/${search_query}`)
-      gaUE("User Search",`/search/${search_query}`)
-    
-     stopPageLoad()
-    });
-  }
+  const searchDataset = (search_query: string) => {
+    startPageLoad();
+    axios
+      .get(`/api/correlated_dataset?search=${search_query}`)
+      .then((res: any) => {
+        let suggestedAreas = res.data.filter(
+          (x: any) => x.suggested_area === true
+        );
+        setAreas(suggestedAreas);
+        gaPV("Dataset Search", `/search/${search_query}`);
+        gaUE("User Search", `/search/${search_query}`);
+
+        stopPageLoad();
+      });
+  };
 
   useEffect(() => {
     fetchData();
 
-    let sidebarThread:any = document.querySelector(".sidebar")
-     sidebarThread.onscroll= () => {
-       let scroll = sidebarThread.scrollTop
-       if (scroll > 1200 && scroll < 1300) {
-        gaPV("Content Read")
-        gaScroll("Content Read Scroll")
-        gaUE("Engagement","Reading Content")
+    let sidebarThread: any = document.querySelector(".sidebar");
+    sidebarThread.onscroll = () => {
+      let scroll = sidebarThread.scrollTop;
+      if (scroll > 1200 && scroll < 1300) {
+        gaPV("Content Read");
+        gaScroll("Content Read Scroll");
+        gaUE("Engagement", "Reading Content");
       }
-     }
+    };
   }, []);
 
   useEffect(() => {
@@ -132,17 +141,18 @@ const Sidebar = (props: any) => {
                     placeholder="Search Places.."
                     className="form-control"
                     id="search-input"
-                    onKeyUp={(e:any)=>{
-                      setQuery(e.target.value)
-                     if(e.key === "Enter"){
-                      searchDataset(e.target.value)
-                     }
+                    onKeyUp={(e: any) => {
+                      setQuery(e.target.value);
+                      if (e.key === "Enter") {
+                        searchDataset(e.target.value);
+                      }
                     }}
                   />
-                  <button className="btn btn-default ml-2" 
-                  onClick={()=>{
-                    searchDataset(query)
-                  }}
+                  <button
+                    className="btn btn-default ml-2"
+                    onClick={() => {
+                      searchDataset(query);
+                    }}
                   >
                     <i className="la la-search" />
                   </button>
@@ -181,7 +191,7 @@ const Sidebar = (props: any) => {
 
               {areas && areas.length === 0 && query.trim() !== "" && (
                 <div className="mt-3 border-top py-3 fade-in-bottom">
-                <h2>No results found.</h2>
+                  <h2>No results found.</h2>
                 </div>
               )}
 

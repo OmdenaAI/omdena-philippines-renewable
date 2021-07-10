@@ -26,6 +26,7 @@ const SiteDetails = (props: any) => {
       <br />
 
       <div className="research-tab px-1 mt-5 pt-5">
+        <h2 className="text-primary">[Work in progress]</h2>
         <h3 className="mt-0">Living in Darkness</h3>
         <p>
           During nighttime, light intensity in{" "}

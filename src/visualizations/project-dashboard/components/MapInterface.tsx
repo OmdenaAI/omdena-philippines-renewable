@@ -4,6 +4,7 @@ import {
   currentLocation,
   fetchGlobalMapdata,
   gaPV,
+  gaUE,
   isMobile,
   MovesStyle,
 } from "./Utils";
@@ -78,8 +79,6 @@ const MapInterface = (props: any) => {
 
       if (!existingMarker) {
         markersData.forEach((nmarker: any, index: number) => {
-          //:TODO complete marker render functions
-
           var elx = document.createElement("div");
           elx.className = `marker-location-update lu-${index}`;
           elx.onclick = () => {
@@ -135,8 +134,8 @@ const MapInterface = (props: any) => {
 
     // detect zooming on map to measure engagement
 
-    map.on("zoom", function () {
-      // console.log('A zoom event occurred.');
+    map.on("zoomend", function () {
+      gaUE("Map Exploration");
     });
 
     // bind events to trigger buttons
