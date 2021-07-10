@@ -1,11 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-// import { guid } from "../../components/Utils";
+import { guid } from "../../components/Utils";
 import DOE_dataset from "./doe_v1.json";
+import energy_demand_data from "./task2_records.json";
 import Fuse from "fuse.js";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   // add unique id to dataset
   let dataset: any = [...DOE_dataset];
+
+  // for handling suggestion based on powerplants
+
   // dataset.forEach((x: any) => {
   // if (x.connection_type === "Off-Grid") {
   //   x.suggested_area = true;
@@ -20,10 +24,33 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
   // });
 
+  let task2_dataset: any = [...energy_demand_data];
+  let suggested_areas: any = [];
+
+  task2_dataset.forEach((data: any) => {
+    let formatted_suggestion = {
+      id: guid(),
+      municipality: data.DHSREGNA,
+      operating_hours: 0,
+      area_type: data.URBAN_RURA === "R" ? "rural" : "urban",
+      suggested_area: data.Response <= 0.55 ? true : false,
+      longitude: data.LONGNUM,
+      latitude: data.LATNUM,
+      response: data.Response,
+      facility_name: data.URBAN_RURA === "R" ? "Rural Area" : "Urban Area",
+    };
+
+    if (formatted_suggestion.suggested_area) {
+      suggested_areas.push(formatted_suggestion);
+    }
+  });
+
+  // merge datasets
+  dataset = [...dataset, ...suggested_areas];
+
   // sort the dataset to prioritize lower operating hours
   dataset = dataset.sort(
-    (a: any, b: any) =>
-      parseFloat(a.operating_hours) - parseFloat(b.operating_hours)
+    (a: any, b: any) => parseFloat(a.response) - parseFloat(b.response)
   );
 
   // handle search query
