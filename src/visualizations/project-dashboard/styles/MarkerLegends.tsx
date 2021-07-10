@@ -39,22 +39,43 @@ const MarkerLegends = () => {
   ];
 
   return (
-    <div className="marker-legends fade-in-bottom">
-      <small>
-        <i className="la la-map-marker text-info" /> Marker Labels
-      </small>
+    <div className="marker-infos">
+      <div className="marker-legends fade-in-bottom">
+        <small>
+          <i className="la la-map-marker text-info" /> Marker Labels
+        </small>
 
-      <ul className="pt-2">
-        {MarkerLabels.map((item: any, index: number) => {
-          return (
-            <li key={index}>
-              <div className={`label-icon ${item.classification}`} />
+        <ul className="pt-1">
+          {MarkerLabels.map((item: any, index: number) => {
+            return (
+              <li key={index}>
+                <div className={`label-icon ${item.classification}`} />
 
-              {item.name}
-            </li>
-          );
-        })}
-      </ul>
+                {item.name}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div className="marker-legends fade-in-bottom">
+        <small>
+          <i className="la la-bolt text-info" /> ENERGY DEMAND
+        </small>
+        <ul>
+          <div className="progress mt-3">
+            <div
+              className="progress-bar energy-demand-gradient"
+              role="progressbar"
+              style={{ width: "100%" }}
+            ></div>
+          </div>
+          <div className="labels">
+            <span>HIGH</span>
+            <span>LOW</span>
+          </div>
+        </ul>
+      </div>
     </div>
   );
 };
