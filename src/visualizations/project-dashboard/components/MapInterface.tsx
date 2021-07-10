@@ -135,7 +135,11 @@ const MapInterface = (props: any) => {
     // detect zooming on map to measure engagement
 
     map.on("zoomend", function () {
-      gaUE("Map Exploration");
+      gaUE("(Zoom) ap Exploration");
+    });
+
+    map.on("dragend", function () {
+      gaUE("(Drag) Map Exploration");
     });
 
     // bind events to trigger buttons
