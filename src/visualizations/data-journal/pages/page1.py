@@ -5,6 +5,6 @@ class Page1:
         self.app()
 
     def app():
-        st.title('Page 1')
-        st.write('Welcome to Page 1')
+        st.title('Data Extraction')
+        st.write('Extracting PV Power Potential using Single Diode Formula, KMeans Algorithm, Gaussian Mixture Model, and DBSCAN Algorithm')
         st.write('These pages would be used to showcase the different notebook files created')

@@ -9,7 +9,7 @@ class HomePage:
     
     def __init__(self):
         self.title = "Data Journal"
-        self.subtitle = "A Data-Driven Approach to the Visualization of the World"
+        self.subtitle = "Documenting everything from Data Processing to Data Modeling"
         self.author = "Neil Ruaro"
         self.PAGES = {
             "Page 1" : p1.Page1,
