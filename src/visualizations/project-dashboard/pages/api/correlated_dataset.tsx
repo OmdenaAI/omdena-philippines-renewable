@@ -1,25 +1,24 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 // import { guid } from "../../components/Utils";
-import DOE_dataset from "./correlated_data.json";
+import DOE_dataset from "./doe_v1.json";
 import Fuse from "fuse.js";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   // add unique id to dataset
   let dataset: any = [...DOE_dataset];
-  dataset.forEach((x: any) => {
-    // x.id = guid();
-    if (x.connection_type === "Off-Grid") {
-      x.suggested_area = true;
-    }
+  // dataset.forEach((x: any) => {
+  // if (x.connection_type === "Off-Grid") {
+  //   x.suggested_area = true;
+  // }
+  // make sure to only suggested areas with power stations that
+  // operate less thatn 24 hours
+  // if (x.operating_hours < 24) {
+  //   x.suggested_area = true;
+  // } else {
+  //   x.suggested_area = false;
+  // }
 
-    // make sure to only suggested areas with power stations that
-    // operate less thatn 24 hours
-    if (x.operating_hours < 24) {
-      x.suggested_area = true;
-    } else {
-      x.suggested_area = false;
-    }
-  });
+  // });
 
   // sort the dataset to prioritize lower operating hours
   dataset = dataset.sort(
