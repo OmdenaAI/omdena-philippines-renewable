@@ -89,6 +89,7 @@ const MapInterface = (props: any) => {
           };
           elx.onmouseenter = () => {
             gaUE("Interaction: Viewing marker details");
+            gaPV(`${nmarker.municipality} | Marker Details`);
           };
           elx.innerHTML = `
 
@@ -139,10 +140,12 @@ const MapInterface = (props: any) => {
 
     map.on("zoomend", function () {
       gaUE("(Zoom) ap Exploration");
+      gaPV("(Zoom) Map Exploration");
     });
 
     map.on("dragend", function () {
       gaUE("(Drag) Map Exploration");
+      gaPV("(Drag) Map Exploration");
     });
 
     // bind events to trigger buttons
