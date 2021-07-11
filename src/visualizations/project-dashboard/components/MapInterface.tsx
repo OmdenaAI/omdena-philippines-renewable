@@ -87,6 +87,9 @@ const MapInterface = (props: any) => {
               gaPV("Site Detail View | Map Click", `${nmarker.municipality}`);
             }
           };
+          elx.onmouseenter = () => {
+            gaUE("Interaction: Viewing marker details");
+          };
           elx.innerHTML = `
 
           <div class="map-marker ${
