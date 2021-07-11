@@ -53,12 +53,12 @@ const MapInterface = (props: any) => {
           "fill-color": {
             property: "Response",
             stops: [
-              [0.2, "#66ffff"],
+              [0.2, "transparent"],
               [0.4, "#00ccff"],
-              [1, "transparent"],
+              [1, "#66ffff"],
             ],
           },
-          "fill-opacity": 0.4,
+          "fill-opacity": 0.2,
         },
       });
     });

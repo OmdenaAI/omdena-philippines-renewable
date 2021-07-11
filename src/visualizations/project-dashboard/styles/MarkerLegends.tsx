@@ -60,7 +60,7 @@ const MarkerLegends = () => {
 
       <div className="marker-legends fade-in-bottom">
         <small>
-          <i className="la la-bolt text-info" /> ENERGY DEMAND
+          <i className="la la-bolt text-info" /> ENERGY ACCESS
         </small>
         <ul>
           <div className="progress mt-3">
@@ -71,8 +71,8 @@ const MarkerLegends = () => {
             ></div>
           </div>
           <div className="labels">
-            <span>HIGH</span>
-            <span>LOW</span>
+            <span>No Access</span>
+            <span>Has Access</span>
           </div>
         </ul>
       </div>
