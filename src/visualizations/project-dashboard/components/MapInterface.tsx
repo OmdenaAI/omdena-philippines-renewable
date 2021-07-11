@@ -82,7 +82,7 @@ const MapInterface = (props: any) => {
           var elx = document.createElement("div");
           elx.className = `marker-location-update lu-${index}`;
           elx.onclick = () => {
-            if (nmarker.connection_type === "Off-Grid") {
+            if (nmarker.suggested_area) {
               props.selectArea(nmarker);
               gaPV("Site Detail View | Map Click", `${nmarker.municipality}`);
             }
