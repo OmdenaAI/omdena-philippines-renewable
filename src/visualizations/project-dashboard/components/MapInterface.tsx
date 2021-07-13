@@ -29,8 +29,23 @@ const MapInterface = (props: any) => {
     map.on("load", () => {
       map.addSource("energy_demand", {
         type: "geojson",
-        // Use a URL for the value for the `data` property.
         data: "/geojson_maps/task2_energy_demand.json",
+      });
+
+      map.addSource("correlated_data", {
+        type: "geojson",
+        data: "/geojson_maps/correlated_v1.json",
+      });
+
+      map.addLayer({
+        id: "data-points",
+        type: "circle",
+        source: "correlated_data",
+        paint: {
+          "circle-color": "#59ffde",
+          "circle-radius": 3,
+          "circle-opacity": 0.5,
+        },
       });
 
       map.addLayer({
@@ -40,7 +55,7 @@ const MapInterface = (props: any) => {
         paint: {
           "line-color": "#fff",
           "line-width": 0.3,
-          "line-opacity": 0.3,
+          "line-opacity": 0.2,
         },
       });
 
@@ -58,7 +73,7 @@ const MapInterface = (props: any) => {
               [1, "#66ffff"],
             ],
           },
-          "fill-opacity": 0.2,
+          "fill-opacity": 0.074,
         },
       });
     });

@@ -26,12 +26,11 @@ const SiteDetails = (props: any) => {
       <br />
 
       <div className="research-tab px-1 mt-5 pt-5">
-        <h2 className="text-primary">[Work in progress]</h2>
         <h3 className="mt-0">Living in Darkness</h3>
         <p>
           During nighttime, light intensity in{" "}
-          <span className="text-primary">{data.municipality}</span>
-          is <span className="text-primary">[DATA]</span> dimmer across{" "}
+          <span className="text-primary">{data.municipality}</span> is{" "}
+          <span className="text-primary">[DATA]</span> dimmer across{" "}
           <span className="text-primary">{data.province}</span>,{" "}
           <span className="text-primary">[DATA]</span> across{" "}
           <span className="text-primary">{data.region}</span>

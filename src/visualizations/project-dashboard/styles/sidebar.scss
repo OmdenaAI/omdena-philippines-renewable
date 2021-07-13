@@ -222,11 +222,11 @@
     width: 100%;
     display: flex;
     justify-content: left;
-    background: #0b2758;
+    background: #fafafaf5;
     position: sticky;
     border: 0px;
     box-shadow: -1px 4px 11px 3px rgba(172, 188, 231, 0.527);
-    top: -1px;
+    top: 0px;
     z-index: 2;
 
     .btn {
@@ -237,13 +237,13 @@
       i {
         font-weight: 700;
         font-size: 35px;
-        color: #fff;
+        color: rgb(41, 41, 126);
       }
     }
 
     span {
       font-weight: 700;
-      color: #fff;
+      color: rgb(21, 21, 75);
       font-size: 17px;
       position: relative;
       top: 8px;

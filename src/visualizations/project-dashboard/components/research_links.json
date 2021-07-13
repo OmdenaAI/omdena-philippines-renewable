@@ -1,26 +1,20 @@
 [
   {
-    "name": "Data Processing",
-    "info": "Interactive web application containting the steps and details of the project datasets were processed.",
-    "url": "/",
-    "profileImage": "https://pbs.twimg.com/profile_images/1366779897423810562/kn7ucNPv.png"
-  },
-  {
     "name": "Project Source Code",
     "info": "Check out the project repository",
-    "url": "/",
+    "url": "https://github.com/OmdenaAI/omdena-philippines-renewable",
     "profileImage": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-  },
-  {
-    "name": "Processing Satellite Images",
-    "info": "Explore using Jupyter Notebook",
-    "url": "/",
-    "profileImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/518px-Jupyter_logo.svg.png"
   },
   {
     "name": "Download the Project Datasets",
     "info": "Get the project dataset",
-    "url": "/",
+    "url": "https://github.com/OmdenaAI/omdena-philippines-renewable/tree/main/src/data",
     "profileImage": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+  },
+  {
+    "name": "Data Processing",
+    "info": "Interactive web application containting the steps and details of the project datasets were processed.",
+    "url": "/",
+    "profileImage": "https://pbs.twimg.com/profile_images/1366779897423810562/kn7ucNPv.png"
   }
 ]
