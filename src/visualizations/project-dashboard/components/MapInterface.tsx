@@ -76,6 +76,40 @@ const MapInterface = (props: any) => {
           "fill-opacity": 0.074,
         },
       });
+
+      let popup = new mapboxgl.Popup({
+        ponterEvents: "none",
+      });
+
+      // create pop up on click
+      map.on("mouseenter", "data-points", function (e: any) {
+        let markerUI = `
+        <div class="map-marker 
+         suggested-area active-marker" >
+          <div class="marker-info">
+        <div class="marker-info-content">
+        <div class="content">
+        <span>Suggested Area</span>
+        <small>Population: ${e.features[0].properties.POP1.toFixed(0)}</small>
+        </div>
+
+          <small class="badge badge-success">
+       
+             Point Information
+           
+        </small>
+         </div>
+         </div>
+          </div>
+        `;
+        popup.setLngLat(e.lngLat);
+
+        popup.setHTML(markerUI);
+        popup.addTo(map);
+
+        gaUE("Hover: Point Info View");
+        gaPV("Hover: Point Info View");
+      });
     });
 
     const flytoLocation = () => {
@@ -109,7 +143,7 @@ const MapInterface = (props: any) => {
           elx.innerHTML = `
 
           <div class="map-marker ${
-            nmarker.suggested_area ? "suggested-area" : ""
+            nmarker.suggested_area ? "suggested-area area-marker" : ""
           }" id="mk-${nmarker.id}">
             <div class="marker-info">
           <div class="marker-info-content">
@@ -119,10 +153,10 @@ const MapInterface = (props: any) => {
           </div>
 
             <small class="badge ${
-              nmarker.suggested_area ? "badge-success" : "badge-primary"
+              nmarker.suggested_area ? "badge-info" : "badge-primary"
             } m-2">${
             nmarker.suggested_area
-              ? "Suggested Area"
+              ? "AREA MARKER"
               : `${nmarker.category} Powerplant`
           }</small>
            </div>
@@ -154,7 +188,7 @@ const MapInterface = (props: any) => {
     // detect zooming on map to measure engagement
 
     map.on("zoomend", function () {
-      gaUE("(Zoom) ap Exploration");
+      gaUE("(Zoom) Map Exploration");
       gaPV("(Zoom) Map Exploration");
     });
 

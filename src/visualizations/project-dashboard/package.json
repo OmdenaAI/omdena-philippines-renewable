@@ -1,7 +1,7 @@
 {
-  "name": "mosiac",
+  "name": "omdena-solar-dashboard",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "./kill_port.sh; next dev",
     "build": "next build",

@@ -38,6 +38,7 @@
   position: relative;
 
   .marker-info {
+    pointer-events: none;
     display: none;
     position: absolute;
     width: 300px;
@@ -99,6 +100,12 @@
     .marker-info-content {
       border-top: 8px solid rgb(53, 255, 161);
     }
+
+    &.area-marker {
+      .marker-info-content {
+        border-top: 8px solid rgb(97, 53, 255);
+      }
+    }
   }
 
   .info-point {
@@ -120,9 +127,9 @@
     // opacity: 0.7;
 
     &.suggested-area {
-      background: rgb(113, 241, 113) !important;
+      background: rgba(138, 240, 138, 0.959) !important;
       transform: none;
-      $size: 12px;
+      $size: 10px;
       height: $size;
       width: $size;
       border-radius: 100%;
@@ -142,23 +149,24 @@
   }
 
   &:hover {
-    .marker-info {
-      display: flex;
-    }
-    .marker {
-      &.suggested-area {
-        border: 2px solid rgb(252, 252, 252);
-        opacity: 0.3;
-        $size: 120px;
-        height: $size;
-        width: $size;
-      }
-    }
+    // .marker-info {
+    //   display: flex;
+    // }
+    // .marker {
+    //   &.suggested-area {
+    //     border: 2px solid rgb(252, 252, 252);
+    //     opacity: 0.3;
+    //     $size: 120px;
+    //     height: $size;
+    //     width: $size;
+    //   }
+    // }
   }
 
   &.active-marker {
     .marker-info {
       display: flex;
+      // display: none;
     }
     .marker {
       &.suggested-area {
