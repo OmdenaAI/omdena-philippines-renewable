@@ -238,6 +238,15 @@
           width: $size;
           background: rgb(113, 241, 113) !important;
         }
+
+        &.pointer-marker {
+          bottom: -4px;
+          border-radius: 100%;
+          $size: 9px;
+          height: $size;
+          width: $size;
+          background: #59ffdee3 !important;
+        }
       }
     }
   }

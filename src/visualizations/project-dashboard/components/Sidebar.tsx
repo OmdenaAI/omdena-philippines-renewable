@@ -215,11 +215,11 @@ const Sidebar = (props: any) => {
                         <div className="card-info">
                           <span>{data.municipality}</span>
                           <div className="tag-row mt-1">
-                            <small className="badge badge-primary mr-1">
-                              {data.facility_name}
+                            <small className="badge badge-primary mr-2">
+                              Area marker
                             </small>
-                            <small className="badge badge-default">
-                              {data.connection_type}
+                            <small className="badge badge-primary">
+                              {data.facility_name}
                             </small>
                           </div>
                         </div>

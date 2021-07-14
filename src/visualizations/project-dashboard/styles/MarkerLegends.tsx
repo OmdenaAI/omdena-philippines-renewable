@@ -1,8 +1,12 @@
 const MarkerLegends = () => {
   const MarkerLabels: any = [
     {
-      name: "Suggested Areas",
+      name: "Area Marker",
       classification: "Off-Grid",
+    },
+    {
+      name: "Suggested Areas",
+      classification: "pointer-marker",
     },
     {
       name: "Solar Power Station",
