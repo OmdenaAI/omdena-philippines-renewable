@@ -1,33 +1,33 @@
 .Solar {
-  background: rgb(248, 128, 59);
+  background: rgb(248, 128, 59) !important;
 }
 
 .Hydroelectric {
-  background: rgb(59, 194, 248);
+  background: rgb(59, 194, 248) !important;
 }
 
 .Wind {
-  background: rgb(59, 70, 226);
+  background: rgb(59, 70, 226) !important;
 }
 
 .Oil-Based {
-  background: rgb(136, 28, 8);
+  background: rgb(136, 28, 8) !important;
 }
 
 .Biomass {
-  background: rgb(233, 170, 241);
+  background: rgb(233, 170, 241) !important;
 }
 
 .NaturalGas {
-  background: rgb(181, 201, 96);
+  background: rgb(181, 201, 96) !important;
 }
 
 .Geothermal {
-  background: rgb(245, 209, 130);
+  background: rgb(245, 209, 130) !important;
 }
 
 .Coal {
-  background: rgb(77, 64, 37);
+  background: rgb(77, 64, 37) !important;
 }
 
 // marker styles
@@ -245,7 +245,7 @@
           $size: 9px;
           height: $size;
           width: $size;
-          background: #59ffdee3 !important;
+          // background: #59ffdee3 !important;
         }
       }
     }
@@ -267,5 +267,10 @@
 }
 
 .energy-demand-gradient {
-  background: linear-gradient(to left, #468ba1 20%, #0d385b, black);
+  background: linear-gradient(
+    to left,
+    #468ba1 20%,
+    #0d385b,
+    rgba(0, 0, 0, 0.89)
+  );
 }
