@@ -148,7 +148,9 @@ const MapInterface = (props: any) => {
           <div class="map-marker ${
             nmarker.suggested_area ? "suggested-area area-marker" : ""
           }" id="mk-${nmarker.id}">
-            <div class="marker-info">
+            <div class="marker-info ${
+              nmarker.suggested_area ? "suggested-area area-marker" : ""
+            }">
           <div class="marker-info-content">
           <div class="content">
           <span>${nmarker.facility_name}</span>

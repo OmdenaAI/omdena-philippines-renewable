@@ -97,6 +97,10 @@
   padding: 0px 18px;
   display: flex;
   flex-direction: column;
+
+  .text-primary {
+    font-weight: 700;
+  }
 }
 
 .cover-card {
@@ -128,7 +132,7 @@
       rgba(255, 255, 255, 0.315) 20%,
       rgba(8, 8, 8, 0.979)
     ),
-    url("https://images.unsplash.com/photo-1501526029524-a8ea952b15be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80")
+    url("https://images.unsplash.com/photo-1501526029524-a8ea952b15be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=40")
       no-repeat;
   background-size: cover;
   height: 150px;
@@ -323,7 +327,7 @@
       rgba(255, 255, 255, 0.315) 20%,
       rgba(8, 8, 8, 0.979)
     ),
-    url("https://www.build-review.com/wp-content/uploads/2021/02/solar-panels.jpg")
+    url("https://images.unsplash.com/photo-1536481046830-9b11bb07e8b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80")
       no-repeat;
   background-size: cover;
   height: 210px;

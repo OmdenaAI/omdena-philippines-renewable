@@ -113,7 +113,7 @@ const Sidebar = (props: any) => {
       <div className="sidebar">
         {screen === "details" && (
           <DetailsScreen setScreen={setScreen} title="Location Details">
-            <SiteDetails data={selectedSite} />
+            <SiteDetails data={selectedSite} setScreen={setScreen} />
           </DetailsScreen>
         )}
 

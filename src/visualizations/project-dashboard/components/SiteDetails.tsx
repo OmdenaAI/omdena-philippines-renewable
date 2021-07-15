@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { gaPV } from "./Utils";
+import { gaPV, numberWithCommas } from "./Utils";
+import { BarChart } from "reaviz";
 
 const SiteDetails = (props: any) => {
   const data = props.data;
@@ -26,87 +27,119 @@ const SiteDetails = (props: any) => {
       <br />
 
       <div className="research-tab px-1 mt-5 pt-5">
-        <h3 className="mt-0">Living in Darkness</h3>
+        <h2 className="mt-0">Lacking in Energy</h2>
         <p>
-          During nighttime, light intensity in{" "}
-          <span className="text-primary">{data.municipality}</span> is{" "}
-          <span className="text-primary">[DATA]</span> dimmer across{" "}
-          <span className="text-primary">{data.province}</span>,{" "}
-          <span className="text-primary">[DATA]</span> across{" "}
-          <span className="text-primary">{data.region}</span>
-          and <span className="text-primary">[DATA]</span> versus{" "}
-          <span className="text-primary">Metro Manila</span>.
+          According the DHS data an estimated{" "}
+          <span className="text-primary">
+            {numberWithCommas(data.population.toFixed(0))} people
+          </span>{" "}
+          living in <span className="text-primary">{data.municipality}</span>.
+          In which there are approximately{" "}
+          <span className="text-primary">
+            {numberWithCommas(data.count)} households
+          </span>{" "}
+          around the area that have limited access to electricity.
         </p>
 
-        <h3 className="mt-0">Lacking in Energy</h3>
+        <h2 className="mt-4">Hope in Solar Energy</h2>
+        <img
+          src="https://images.unsplash.com/photo-1592833159117-ac790d4066e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+          className="img-fluid my-2"
+        />
         <p>
-          From PSA 2018 data there are{" "}
-          <span className="text-primary">[DATA] people</span> living in{" "}
-          <span className="text-primary">{data.municipality}</span>. Based on
-          our estimates, there are approximately{" "}
-          <span className="text-primary">[DATA] households & settlements</span>{" "}
-          in the area.
-        </p>
-        <p>
-          The <span className="text-primary">[DATA] power plants</span> within
-          [DATA] radius can provide around{" "}
-          <span className="text-primary">[DATA]</span> kWh, amounting to only{" "}
-          <span className="text-primary">[DATA] hours</span> of power daily,
-          complemented by rotational brownouts.
-        </p>
-        <p>
-          Considering [COMPUTE] kWh is needed in order to have a continuous
-          supply of electricity throughout the day, there is a deficit of nearly
-          [COMPUTE] kWH.
+          Based on the{" "}
+          <a
+            href="https://globalsolaratlas.info/support/data-outputs"
+            target="_blank"
+          >
+            Solar Global Atlas
+          </a>{" "}
+          and World Bank Dataset, Solar Panels around this area can produce the
+          following amount of energy:
+          <h3 className="text-primary mt-2">
+            Mean PVout: {numberWithCommas(data.pvout_average_mean.toFixed(2))}{" "}
+            KW/h
+          </h3>
+          <div className="pl-3 mt-4">
+            <BarChart
+              height={180}
+              width={320}
+              data={[
+                { key: "Minimum", data: data.pvout_average_min },
+                { key: "Maximum", data: data.pvout_average_max },
+                { key: "Mean", data: data.pvout_average_mean },
+                { key: "H. Power Consumption", data: 248.1 },
+                { key: "Households", data: data.count },
+              ]}
+            />
+          </div>
         </p>
 
-        <h3 className="mt-4">Hope in Solar Energy</h3>
+        <h3 className="mt--3"></h3>
         <p>
-          We’ve estimated that installing a solar microgrid in this area could
-          generate:
-          {/* <p>based on the SolarGIS dataset the mean voltage output of this area is around: </p> */}
-          <h2 className="text-primary">[DATA] kWh</h2>
-          In estimating the solar energy capacity, we’ve used (solar irradiance,
-          elevation - please add more).
+          According to the{" "}
+          <a
+            href="https://www.statista.com/statistics/600115/household-consumption-of-electricity-per-capita-in-the-philippines/"
+            target="_blank"
+          >
+            Statisa Research Department (2016)
+          </a>
+          , On average, the household electricity consumption in the Philippines
+          is about <span className="text-primary">248.1 KW/h</span>.
         </p>
 
-        <h3 className="mt-4">Living in Light</h3>
         <p>
-          The energy that solar can add is [EVAL] to mitigate the energy poverty
-          of <span className="text-primary">{data.municipality}</span>. By
-          having a solar microgrid,{" "}
-          <span className="text-primary">[DATA] kWh</span> of energy could
-          supply the [DATA] households in the area.
+          And with the average Solar Energy output (per Solar Panel) ranging
+          around{" "}
+          <strong className="text-primary">
+            {numberWithCommas(data.pvout_average_mean.toFixed(2))} KW/h
+          </strong>{" "}
+          for the suggested areas of{" "}
+          <strong className="text-primary">{data.municipality}</strong>, We can
+          see that solar energy can be effective power source for this area.
         </p>
-        <p>
-          Additionally, using solar could also save us [COMPUTE] tons of CO2
-          emissions and
-          <span className="text-primary">[DATA]</span> months in installation
-          time compared to other energy sources. Providing enough power will
-          hasten further economic development.
+
+        <hr />
+
+        <div className="card border info-card mb-3 mt-3">
+          <div className="header">
+            <small>
+              <i className="la la-exclamation-circle text-primary" /> Disclaimer
+            </small>
+          </div>
+          <div className="px-3 pt-2 text-center">
+            <i className="la la-cubes la-3x text-info" />
+            <p className="py-1">
+              This is an experimental open-source project. All of the data
+              provided from this tool/web application are not absolute and may
+              be subject to change in future iterations. Use this platform at
+              your own risk.
+            </p>
+          </div>
+        </div>
+
+        <p className="py-1">
+          If you have feedback, questions, or suggestions, feel free to reach
+          out to the project contributors. or check out the research tab to
+          learn more
         </p>
-        <h2 className="text-primary">{data.accumulated_installed_g_co2_eq}</h2>
 
-        {/* <h3 className="mt-5">Addition Information</h3> */}
-
-        {/* {data &&
-        Object.keys(data).map((x: any, index: number) => {
-          return (
-            <div className="card border info-card" key={index}>
-              <div className="header">
-                <small>
-                  <i className="la la-cube text-primary" />{" "}
-                  {x.split("_").join(" ")}
-                </small>
-              </div>
-              {x !== "icon" && (
-                <span className="px-3 py-2">
-                  {values[index] ? values[index] : "N/A"}
-                </span>
-              )}
-            </div>
-          );
-        })} */}
+        <button
+          className="btn btn-sm btn-default"
+          onClick={() => {
+            props.setScreen("about");
+          }}
+        >
+          <i className="la la-user" /> See Contributors
+        </button>
+        <button
+          className="btn btn-sm btn-default"
+          onClick={() => {
+            props.setScreen("research");
+          }}
+        >
+          <i className="la la-chart-line" /> Research Tab
+        </button>
       </div>
     </>
   );

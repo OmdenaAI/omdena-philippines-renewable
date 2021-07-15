@@ -45,10 +45,12 @@ const MarkerLegends = () => {
   ];
 
   const [pointColor, setpointColor] = useState<string>("#59ffde");
+  const [mapMode, setMapMode] = useState<string>("dark");
 
   useEffect(() => {
     if (localStorage.pointColor) {
       setpointColor(localStorage.pointColor);
+      setMapMode(localStorage.mapMode);
     }
   }, []);
 
@@ -87,7 +89,7 @@ const MarkerLegends = () => {
         <ul>
           <div className="progress mt-3">
             <div
-              className="progress-bar energy-demand-gradient"
+              className={`progress-bar energy-demand-gradient ${mapMode}`}
               role="progressbar"
               style={{ width: "100%" }}
             ></div>

@@ -183,3 +183,8 @@ export const getFillOpacity = () => {
 
   return fillOpacity;
 };
+
+// number with comma formatter
+export const numberWithCommas = (x: any) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
