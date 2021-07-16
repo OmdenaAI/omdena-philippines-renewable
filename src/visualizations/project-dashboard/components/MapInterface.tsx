@@ -71,9 +71,12 @@ const MapInterface = (props: any) => {
           "fill-color": {
             property: "Response",
             stops: [
-              [0.2, "transparent"],
-              [0.4, "#00ccff"],
-              [1, "#66ffff"],
+              [0.0, "#0B1C71"],
+              [0.2, "#1C4998"],
+              [0.4, "#1D7EB3"],
+              [0.6, "#36A8B8"],
+              [0.8, "#BCE6A5"],
+              [1, "#FEFFC1"]
             ],
           },
           "fill-opacity": getFillOpacity(),

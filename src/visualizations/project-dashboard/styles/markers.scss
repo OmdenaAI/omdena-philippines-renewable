@@ -265,9 +265,9 @@
   &.dark {
     background: linear-gradient(
       to left,
-      #468ba1 20%,
-      #0d385b,
-      rgba(0, 0, 0, 0.89)
+      #0b1c71 ,
+      #36A8B8 ,
+      #FEFFC1 
     );
   }
 
@@ -275,17 +275,18 @@
   &.street {
     background: linear-gradient(
       to left,
-      #6ce9f1 10%,
-      rgba(255, 255, 255, 0.89)
+      #0b1c71a6 ,
+      #36a9b89c ,
+      #feffc1ab 
     );
   }
 
   &.satellite {
     background: linear-gradient(
       to left,
-      #29dfd0 20%,
-      #0b5744,
-      rgba(67, 121, 85, 0.89)
+      #0b1c71 ,
+      #36A8B8 ,
+      #FEFFC1 
     );
   }
 }
