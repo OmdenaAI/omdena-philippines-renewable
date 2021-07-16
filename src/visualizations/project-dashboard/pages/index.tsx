@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Layout from "../components/Layout";
 import MapInterface from "../components/MapInterface";
 import Sidebar from "../components/Sidebar";
-import { startPageLoad, stopPageLoad, Toast } from "../components/Utils";
 import MarkerLegends from "../styles/MarkerLegends";
 
 const Index = () => {
   const [coordinates, setCoordinates] = useState(null);
   const [selectedArea, selectArea] = useState(null);
-
-  useEffect(() => {
-    startPageLoad();
-    setTimeout(() => {
-      stopPageLoad();
-      Toast("Dashboard is Ready!");
-    }, 5000);
-  }, []);
 
   return (
     <>

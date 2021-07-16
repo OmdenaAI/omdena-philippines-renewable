@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const MarkerLegends = () => {
   const MarkerLabels: any = [
     {
@@ -42,6 +44,16 @@ const MarkerLegends = () => {
     },
   ];
 
+  const [pointColor, setpointColor] = useState<string>("#59ffde");
+  const [mapMode, setMapMode] = useState<string>("dark");
+
+  useEffect(() => {
+    if (localStorage.pointColor) {
+      setpointColor(localStorage.pointColor);
+      setMapMode(localStorage.mapMode);
+    }
+  }, []);
+
   return (
     <div className="marker-infos">
       <div className="marker-legends fade-in-bottom">
@@ -53,7 +65,15 @@ const MarkerLegends = () => {
           {MarkerLabels.map((item: any, index: number) => {
             return (
               <li key={index}>
-                <div className={`label-icon ${item.classification}`} />
+                <div
+                  style={{
+                    backgroundColor:
+                      item.classification === "pointer-marker"
+                        ? pointColor
+                        : "#59ffde",
+                  }}
+                  className={`label-icon ${item.classification}`}
+                />
 
                 {item.name}
               </li>
@@ -69,7 +89,7 @@ const MarkerLegends = () => {
         <ul>
           <div className="progress mt-3">
             <div
-              className="progress-bar energy-demand-gradient"
+              className={`progress-bar energy-demand-gradient ${mapMode}`}
               role="progressbar"
               style={{ width: "100%" }}
             ></div>

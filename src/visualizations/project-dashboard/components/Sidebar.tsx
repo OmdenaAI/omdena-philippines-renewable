@@ -12,6 +12,7 @@ import {
   startPageLoad,
   stopPageLoad,
 } from "./Utils";
+import MapStyleSelector from "../styles/MapStyleSelector";
 
 const Sidebar = (props: any) => {
   const [areas, setAreas] = useState<any>(null);
@@ -26,6 +27,7 @@ const Sidebar = (props: any) => {
   };
 
   const fetchData = () => {
+    startPageLoad();
     axios.get("/api/correlated_dataset").then((res: any) => {
       let suggestedAreas = res.data.filter(
         (x: any) => x.suggested_area === true
@@ -39,6 +41,8 @@ const Sidebar = (props: any) => {
       if (markerTrigger) {
         markerTrigger.click();
       }
+
+      stopPageLoad();
     });
   };
 
@@ -109,7 +113,7 @@ const Sidebar = (props: any) => {
       <div className="sidebar">
         {screen === "details" && (
           <DetailsScreen setScreen={setScreen} title="Location Details">
-            <SiteDetails data={selectedSite} />
+            <SiteDetails data={selectedSite} setScreen={setScreen} />
           </DetailsScreen>
         )}
 
@@ -187,7 +191,12 @@ const Sidebar = (props: any) => {
                 </span>
               </div>
 
-              <h4>Sorted based on relevance</h4>
+              <MapStyleSelector />
+
+              <h4>
+                <i className="la la-list text-primary" /> Sorted based on
+                relevance
+              </h4>
 
               {areas && areas.length === 0 && query.trim() !== "" && (
                 <div className="mt-3 border-top py-3 fade-in-bottom">

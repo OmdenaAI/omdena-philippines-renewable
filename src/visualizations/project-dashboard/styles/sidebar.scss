@@ -97,6 +97,10 @@
   padding: 0px 18px;
   display: flex;
   flex-direction: column;
+
+  .text-primary {
+    font-weight: 700;
+  }
 }
 
 .cover-card {
@@ -113,8 +117,7 @@
   padding: 20px 25px;
   display: flex;
 
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
-    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   margin-bottom: 20px;
 
@@ -129,7 +132,7 @@
       rgba(255, 255, 255, 0.315) 20%,
       rgba(8, 8, 8, 0.979)
     ),
-    url("https://images.unsplash.com/photo-1501526029524-a8ea952b15be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80")
+    url("https://images.unsplash.com/photo-1501526029524-a8ea952b15be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=40")
       no-repeat;
   background-size: cover;
   height: 150px;
@@ -324,7 +327,7 @@
       rgba(255, 255, 255, 0.315) 20%,
       rgba(8, 8, 8, 0.979)
     ),
-    url("https://www.build-review.com/wp-content/uploads/2021/02/solar-panels.jpg")
+    url("https://images.unsplash.com/photo-1536481046830-9b11bb07e8b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80")
       no-repeat;
   background-size: cover;
   height: 210px;
@@ -336,5 +339,81 @@
     color: #fff;
     font-weight: 700;
     font-size: 25px;
+  }
+}
+
+// map style selector
+
+.map-styles {
+  display: flex;
+  width: 100%;
+  padding: 10px 0px;
+  justify-content: space-between;
+
+  .map-style {
+    width: 79px;
+    height: 90px;
+    border-radius: 5px;
+    padding: 5px 9px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: grid;
+    cursor: pointer;
+    border: 0.3px solid #ddd;
+    filter: contrast(120%);
+    border: 3px solid none;
+    transition: 0.3s;
+
+    span {
+      margin-top: auto;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: #fff;
+    }
+
+    &.dark {
+      background: linear-gradient(
+          rgba(70, 69, 69, 0.226),
+          rgba(47, 116, 180, 0.664)
+        ),
+        url("/images/darkmap.png");
+      background-size: cover;
+    }
+
+    &.light {
+      background: linear-gradient(
+          rgba(233, 233, 233, 0.055),
+          rgba(5, 36, 65, 0.562)
+        ),
+        url("/images/lightmap.png");
+      background-size: cover;
+    }
+
+    &.street {
+      background: linear-gradient(
+          rgba(233, 233, 233, 0.247),
+          rgba(4, 24, 43, 0.61)
+        ),
+        url("/images/streetmap.png");
+      background-size: cover;
+    }
+
+    &.satellite {
+      background: linear-gradient(
+          rgba(70, 69, 69, 0.226),
+          rgba(23, 77, 128, 0.664)
+        ),
+        url("/images/satellite.png");
+      background-size: cover;
+    }
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.199) 0px 4px 12px;
+      transition: 0.3s;
+    }
+
+    &.active-mode {
+      border: 3px solid rgb(90, 90, 221);
+    }
   }
 }

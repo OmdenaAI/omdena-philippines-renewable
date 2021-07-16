@@ -1,7 +1,13 @@
 [
   {
+    "name": "Bryce Mercines",
+    "info": "Software Engineer | Philippines",
+    "url": "https://www.linkedin.com/in/brycemercines/",
+    "profileImage": "https://avatars.githubusercontent.com/u/29462205?v=4"
+  },
+  {
     "name": "Bryan Parajito",
-    "info": "Data Analyst | Philippines",
+    "info": "Data Analyst | Australia",
     "url": "https://www.linkedin.com/in/bryan-pajarito/",
     "profileImage": "https://avatars.githubusercontent.com/u/54926402?v=4"
   },
@@ -10,12 +16,6 @@
     "info": "Electrical Engineer | Philippines",
     "url": "https://www.linkedin.com/in/michael-brian-manuel-4a6017124/",
     "profileImage": "https://avatars.githubusercontent.com/u/41263394?v=4"
-  },
-  {
-    "name": "Bryce Mercines",
-    "info": "Software Engineer | Philippines",
-    "url": "https://www.linkedin.com/in/brycemercines/",
-    "profileImage": "https://avatars.githubusercontent.com/u/29462205?v=4"
   },
   {
     "name": "Andrea Marie Maderazo",
@@ -42,16 +42,22 @@
     "profileImage": "https://avatars.githubusercontent.com/u/7113605?v=4"
   },
   {
-    "name": "Albert Yumol",
-    "info": "Open Sorcerer | Philippines",
-    "url": "https://www.linkedin.com/in/albertyumol/",
-    "profileImage": "https://avatars.githubusercontent.com/u/17405515"
-  },
-  {
     "name": "Jose Marie Antonio Minoza",
     "info": "Data Scientist | Philippines",
     "url": "https://www.linkedin.com/in/jomaminoza/",
     "profileImage": "https://avatars.githubusercontent.com/u/6972093?v=4"
+  },
+  {
+    "name": "Dana Redeña",
+    "info": "Data Scientist | Philippines",
+    "url": "https://www.linkedin.com/in/danaredena",
+    "profileImage": "https://avatars.githubusercontent.com/u/25056256?v=4"
+  },
+  {
+    "name": "Albert Yumol",
+    "info": "Open Sorcerer | Philippines",
+    "url": "https://www.linkedin.com/in/albertyumol/",
+    "profileImage": "https://avatars.githubusercontent.com/u/17405515"
   },
   {
     "name": "Arjay Ronald Hosmillo",
@@ -59,11 +65,12 @@
     "url": "https://www.linkedin.com/in/arjayhosmillo/",
     "profileImage": "https://avatars.githubusercontent.com/u/52721741?v=4"
   },
+
   {
-    "name": "Dana Redeña",
-    "info": "Data Scientist | Philippines",
-    "url": "https://www.linkedin.com/in/danaredena",
-    "profileImage": "https://avatars.githubusercontent.com/u/25056256?v=4"
+    "name": "Carl Terence Valdellon",
+    "info": "Student | Philippines",
+    "url": "https://www.linkedin.com/in/carl-valdellon/",
+    "profileImage": "https://avatars.githubusercontent.com/u/76705051?v=4"
   },
   {
     "name": "Neil Ruaro",

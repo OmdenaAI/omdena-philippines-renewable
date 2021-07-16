@@ -32,8 +32,7 @@ export const stopPageLoad = () => {
   nprogress.done();
 };
 
-export const lightMapStyle =
-  "https://raw.githubusercontent.com/jingsam/mapbox-gl-styles/master/Light.json";
+export const lightMapStyle = "mapbox://styles/mapbox/light-v10";
 export const HurricaneMapStyle =
   "https://raw.githubusercontent.com/jingsam/mapbox-gl-styles/master/Hurricane.json";
 
@@ -44,6 +43,8 @@ export const MovesStyle =
   "https://raw.githubusercontent.com/jingsam/mapbox-gl-styles/master/Moves-map.json";
 
 export const ColoredStyle = "mapbox://styles/mapbox/streets-v11";
+
+export const satelliteStyle = "mapbox://styles/mapbox/satellite-v9";
 
 export const currentLocation = () => {
   if (localStorage.coordinates) {
@@ -156,4 +157,34 @@ export const gaUE = (title: string, url?: string) => {
       page_title: title,
     });
   }
+};
+
+// polygon fill opacity
+
+export const getFillOpacity = () => {
+  let fillOpacity = 0.074;
+
+  let mapMode = localStorage.mapMode ? localStorage.mapMode : "dark";
+
+  switch (mapMode) {
+    case "dark":
+      fillOpacity = 0.074;
+      break;
+    case "light":
+      fillOpacity = 0.095;
+      break;
+    case "street":
+      fillOpacity = 0.095;
+      break;
+    case "satellite":
+      fillOpacity = 0.15;
+      break;
+  }
+
+  return fillOpacity;
+};
+
+// number with comma formatter
+export const numberWithCommas = (x: any) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };

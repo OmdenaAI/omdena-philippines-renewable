@@ -5,6 +5,7 @@ import {
   fetchGlobalMapdata,
   gaPV,
   gaUE,
+  getFillOpacity,
   isMobile,
   MovesStyle,
 } from "./Utils";
@@ -18,7 +19,7 @@ const MapInterface = (props: any) => {
     // start new Mapbox Instance
     const map = new mapboxgl.Map({
       container: document.getElementById("map"),
-      style: MovesStyle,
+      style: localStorage.mapStyle ? localStorage.mapStyle : MovesStyle,
       center: [120.979, 15.0941],
       zoom: 7.3,
       minZoom: 6,
@@ -42,9 +43,11 @@ const MapInterface = (props: any) => {
         type: "circle",
         source: "correlated_data",
         paint: {
-          "circle-color": "#59ffde",
+          "circle-color": localStorage.pointColor
+            ? localStorage.pointColor
+            : "#59ffde",
           "circle-radius": 3,
-          "circle-opacity": 0.5,
+          "circle-opacity": 0.7,
         },
       });
 
@@ -73,7 +76,7 @@ const MapInterface = (props: any) => {
               [1, "#66ffff"],
             ],
           },
-          "fill-opacity": 0.074,
+          "fill-opacity": getFillOpacity(),
         },
       });
 
@@ -85,18 +88,15 @@ const MapInterface = (props: any) => {
       map.on("mouseenter", "data-points", function (e: any) {
         let markerUI = `
         <div class="map-marker 
-         suggested-area active-marker" >
+         suggested-area active-marker">
           <div class="marker-info">
         <div class="marker-info-content">
         <div class="content">
-        <span>Suggested Area</span>
-        <small>Population: ${e.features[0].properties.POP1.toFixed(0)}</small>
+        <span>Suggested Settlements</span>
+        <small>Population: ${e.features[0].properties.POP1.toFixed(1)}</small>
         </div>
-
           <small class="badge badge-success">
-       
              Point Information
-           
         </small>
          </div>
          </div>
@@ -145,7 +145,9 @@ const MapInterface = (props: any) => {
           <div class="map-marker ${
             nmarker.suggested_area ? "suggested-area area-marker" : ""
           }" id="mk-${nmarker.id}">
-            <div class="marker-info">
+            <div class="marker-info ${
+              nmarker.suggested_area ? "suggested-area area-marker" : ""
+            }">
           <div class="marker-info-content">
           <div class="content">
           <span>${nmarker.facility_name}</span>
@@ -197,9 +199,14 @@ const MapInterface = (props: any) => {
       gaPV("(Drag) Map Exploration");
     });
 
+    const changeMapStyle = () => {
+      map.setStyle("mapbox://styles/mapbox/satellite-v9");
+    };
+
     // bind events to trigger buttons
     let mapJump: any = document.getElementById("mapJump");
     let markerTrigger: any = document.getElementById("load-markers");
+    let styleChangeTrigger: any = document.getElementById("change-map-style");
 
     mapJump.onclick = () => {
       flytoLocation();
@@ -207,6 +214,10 @@ const MapInterface = (props: any) => {
 
     markerTrigger.onclick = () => {
       renderMarkers();
+    };
+
+    styleChangeTrigger.onclick = () => {
+      changeMapStyle();
     };
   }, []);
 
@@ -222,6 +233,8 @@ const MapInterface = (props: any) => {
         <button id="mapJump" className="d-none" />
 
         <button id="load-markers" className="d-none" />
+
+        <button id="change-map-style" className="d-none" />
 
         <div>
           <div id="map" className="absolute top right left" />
