@@ -88,18 +88,15 @@ const MapInterface = (props: any) => {
       map.on("mouseenter", "data-points", function (e: any) {
         let markerUI = `
         <div class="map-marker 
-         suggested-area active-marker" >
+         suggested-area active-marker">
           <div class="marker-info">
         <div class="marker-info-content">
         <div class="content">
-        <span>Suggested Area</span>
-        <small>Population: ${e.features[0].properties.POP1.toFixed(0)}</small>
+        <span>Suggested Settlements</span>
+        <small>Population: ${e.features[0].properties.POP1.toFixed(1)}</small>
         </div>
-
           <small class="badge badge-success">
-       
              Point Information
-           
         </small>
          </div>
          </div>
