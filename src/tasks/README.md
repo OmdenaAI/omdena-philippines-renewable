@@ -16,3 +16,5 @@ Note : Please Follow the below guidelines to create task folders
 |3|         |         |
 |4|task-4-solar-irradiance-data-extraction    |Extracted data per barangay related to solar irradiance |
 |4|task-4-cluster-estimated-energy-available   |Trained Models :KMeans, GMM, and DBSCAN to cluster the barangays based on energy availability|
+|4|task-4-estimated-energy-model-and-validation   |Trained Models :KMeans, GMM, and DBSCAN to cluster the barangays based on World Bank PV Out data and Validation from DOE Approved Renewable Projects|
+|4|task-4-clustering-estimated-energy-available-and-demand   |Trained Models :KMeans, GMM, and DBSCAN to cluster the consolidated output from task #2 and #4 based on energy availability, lit per area, and population|
