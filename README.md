@@ -1,7 +1,7 @@
 # Omdena Philippines Renewable
 Increasing Renewable Energy Access in Philippines through AI
 
-This initiative’s goal is to use Philippine satellite data in conjunction with other relevant dataset to identify sites that are most suitable for solar panel installation as a greener energy source through machine learning and coverage analysis. 
+This initiative’s goal is to use Philippine satellite data in conjunction with other relevant datasets to identify sites that are most suitable for solar panel installation through machine learning and coverage analysis.
 
 ## Contribution Guidelines
 - Have a Look at the [project structure](#project-structure) and [folder overview](#folder-overview) below to understand where to store/upload your contribution
