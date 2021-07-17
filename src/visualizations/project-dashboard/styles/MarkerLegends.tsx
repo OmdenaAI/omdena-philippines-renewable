@@ -7,7 +7,7 @@ const MarkerLegends = () => {
       classification: "Off-Grid",
     },
     {
-      name: "Suggested Areas",
+      name: "Suggested Settlements",
       classification: "pointer-marker",
     },
     {

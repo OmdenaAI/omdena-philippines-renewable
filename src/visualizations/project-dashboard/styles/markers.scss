@@ -68,6 +68,12 @@
       background: #fff;
       border-bottom: 0.3px solid #ddd;
       padding: 8px 15px 4px;
+      display: flex;
+      flex-direction: column;
+
+      small {
+        line-height: 15px;
+      }
     }
 
     span {
