@@ -162,22 +162,22 @@ export const gaUE = (title: string, url?: string) => {
 // polygon fill opacity
 
 export const getFillOpacity = () => {
-  let fillOpacity = 0.074;
+  let fillOpacity = 0.20;
 
-  let mapMode = localStorage.mapMode ? localStorage.mapMode : "dark";
+  let mapMode = localStorage.mapMode ? localStorage.mapMode : "light";
 
   switch (mapMode) {
     case "dark":
-      fillOpacity = 0.074;
+      fillOpacity = 0.10;
       break;
     case "light":
-      fillOpacity = 0.095;
+      fillOpacity = 0.20;
       break;
     case "street":
-      fillOpacity = 0.095;
+      fillOpacity = 0.20;
       break;
     case "satellite":
-      fillOpacity = 0.15;
+      fillOpacity = 0.20;
       break;
   }
 

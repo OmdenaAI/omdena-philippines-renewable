@@ -95,8 +95,8 @@ const MarkerLegends = () => {
             ></div>
           </div>
           <div className="labels">
-            <span>No Access</span>
             <span>Has Access</span>
+            <span>No Access</span>
           </div>
         </ul>
       </div>
