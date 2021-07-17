@@ -35,7 +35,7 @@ const MapInterface = (props: any) => {
 
       map.addSource("correlated_data", {
         type: "geojson",
-        data: "/geojson_maps/correlated_v1.json",
+        data: "/geojson_maps/correlated_v2.json",
       });
 
       map.addLayer({
@@ -58,10 +58,11 @@ const MapInterface = (props: any) => {
         paint: {
           "line-color": "#fff",
           "line-width": 0.3,
-          "line-opacity": 0.2,
+          "line-opacity": 0.3,
         },
       });
 
+      // LV cells polygon layer
       map.addLayer({
         id: "demand-fill",
         type: "fill",
@@ -92,8 +93,13 @@ const MapInterface = (props: any) => {
           <div class="marker-info">
         <div class="marker-info-content">
         <div class="content">
-        <span>Suggested Settlement</span>
-        <small>Population: ${e.features[0].properties.POP1.toFixed(1)}</small>
+        <span class="mb-1">Suggested Settlement</span>
+        <small><strong>Population:</strong> ${e.features[0].properties.POP1.toFixed(
+          1
+        )}</small>
+        <small><strong>Area:</strong> ${
+          e.features[0].properties.municipality
+        }</small>
         </div>
           <small class="badge badge-success">
              Point Information

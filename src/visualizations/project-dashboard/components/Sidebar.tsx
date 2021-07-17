@@ -133,12 +133,7 @@ const Sidebar = (props: any) => {
           <>
             <div className="sidebar-navigation">
               <div className="top-bar">
-                <a
-                  href="https://www.linkedin.com/groups/13967597"
-                  target="_blank"
-                >
-                  <img src="/images/omdena-ph.png" />
-                </a>
+                <img src="/images/omdena-ph.png" />
                 <div className="mt-1 mr-2 d-flex">
                   <input
                     type="text"

@@ -5,8 +5,6 @@ import { BarChart } from "reaviz";
 const SiteDetails = (props: any) => {
   const data = props.data;
 
-  // let values: any = Object.values(data);
-
   useEffect(() => {
     let sidebarContainer: any = document.querySelector(".sidebar");
     gaPV(`Site Details`);
@@ -55,10 +53,10 @@ const SiteDetails = (props: any) => {
             Solar Global Atlas
           </a>{" "}
           and World Bank Dataset, Solar Panels around this area can produce the
-          following amount of energy:
+          following amount of energy per square meter:
           <h3 className="text-primary mt-2">
             Mean PVout: {numberWithCommas(data.pvout_average_mean.toFixed(2))}{" "}
-            KW/h
+            kWh
           </h3>
           <div className="pl-3 mt-4">
             <BarChart
@@ -85,14 +83,14 @@ const SiteDetails = (props: any) => {
             Statisa Research Department (2016)
           </a>
           , On average, the household electricity consumption in the Philippines
-          is about <span className="text-primary">248.1 KW/h</span>.
+          is about <span className="text-primary">248.1 kWh</span>.
         </p>
 
         <p>
-          And with the average Solar Energy output (per Solar Panel) ranging
+          And with the average Solar Energy output (per square meter) ranging
           around{" "}
           <strong className="text-primary">
-            {numberWithCommas(data.pvout_average_mean.toFixed(2))} KW/h
+            {numberWithCommas(data.pvout_average_mean.toFixed(2))} kWh
           </strong>{" "}
           for the suggested areas of{" "}
           <strong className="text-primary">{data.municipality}</strong>, We can

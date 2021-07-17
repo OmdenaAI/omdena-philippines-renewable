@@ -1,5 +1,17 @@
 [
   {
+    "name": "Web App Documentation",
+    "info": "Lean more about the project, and how to use the Project's Web application",
+    "url": "https://danakathleen.notion.site/Omdena-PH-Increasing-Renewable-Access-in-the-Philippines-through-AI-fecaad9d24a54253901f413e5d00bcea",
+    "profileImage": "https://i.pinimg.com/originals/99/7b/0a/997b0a243df40b681d8c8177724f1b45.png"
+  },
+  {
+    "name": "Energy Availability Methodology",
+    "info": "Learn how the Solar energy availability dataset was produced for this project.",
+    "url": "https://docs.google.com/presentation/d/1z2zchHAB1dZHmySE3uReJ0jSK2DLOqe_SqxA0N3s1ms/edit?usp=sharing",
+    "profileImage": "/images/google-slides.png"
+  },
+  {
     "name": "Project Source Code",
     "info": "Check out the project repository",
     "url": "https://github.com/OmdenaAI/omdena-philippines-renewable",
