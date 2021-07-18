@@ -4,8 +4,6 @@ import json
 task2_data_file = open('./correlated_v1.json',)
 task4_data_file = open("./task4_data.json")
   
-# returns JSON object as 
-# a dictionary
 
 # load datasets
 task2_data = json.load(task2_data_file)
@@ -33,24 +31,6 @@ for x in task4_data:
 task2_data["features"] = opt_features;
 
 
-# reduce fields ...
-# print "Performing Reduction..."
-# for index, i in enumerate(task4_data):
-
-#     #delete obsolete keys
-#     # del i["properties"]["SCORE"]
-#     del i["properties"]["DOE1"]
-#     del i["properties"]["DHS1"]
-#     del i["properties"]["ELEV1"]
-#     del i["properties"]["NTL1"]
-
-# print "Completed Reduction!"
-# print "==========================="
-# # performing optimization
-# print "Running Normalization..."
-
-
-
 print "==========================="
 print "Task 2 data length:"
 print(len(task2_data["features"]))
@@ -63,6 +43,3 @@ print "Optimization completed!"
 with open('correlated_v2.json', 'w') as outfile:
     json.dump(task2_data, outfile)
   
-# Closing files
-# task2_data_file.close(task2_data_file)
-# task4_data_file.close(task4_data_file)
