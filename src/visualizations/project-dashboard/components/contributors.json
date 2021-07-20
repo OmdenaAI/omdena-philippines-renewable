@@ -6,10 +6,10 @@
     "profileImage": "https://avatars.githubusercontent.com/u/29462205?v=4"
   },
   {
-    "name": "Bryan Parajito",
+    "name": "Bryan Pajarito",
     "info": "Data Analyst | Australia",
-    "url": "https://www.linkedin.com/in/bryan-pajarito/",
-    "profileImage": "https://avatars.githubusercontent.com/u/54926402?v=4"
+    "url": "www.linkedin.com/in/bryan-pajarito",
+    "profileImage": "https://avatars.githubusercontent.com/u/54926402?s=400&u=adcc5ac8c8292fc825a2ec0dc58bffd331a94f60&v=4"
   },
   {
     "name": "Michael Brian Manuel",
@@ -17,6 +17,7 @@
     "url": "https://www.linkedin.com/in/michael-brian-manuel-4a6017124/",
     "profileImage": "https://avatars.githubusercontent.com/u/41263394?v=4"
   },
+
   {
     "name": "Andrea Marie Maderazo",
     "info": "Data Scientist | Philippines",
@@ -42,22 +43,16 @@
     "profileImage": "https://avatars.githubusercontent.com/u/7113605?v=4"
   },
   {
-    "name": "Jose Marie Antonio Minoza",
-    "info": "Data Scientist | Philippines",
-    "url": "https://www.linkedin.com/in/jomaminoza/",
-    "profileImage": "https://avatars.githubusercontent.com/u/6972093?v=4"
-  },
-  {
     "name": "Dana Redeña",
     "info": "Data Scientist | Philippines",
     "url": "https://www.linkedin.com/in/danaredena",
     "profileImage": "https://avatars.githubusercontent.com/u/25056256?v=4"
   },
   {
-    "name": "Abegail Lagar",
-    "info": "Product Engineer | Philippines",
-    "url": "https://www.linkedin.com/in/abegail-lagar",
-    "profileImage": "https://avatars.githubusercontent.com/abbylagar"
+    "name": "Arjay Ronald Hosmillo",
+    "info": "Chemical Engineer / Environmental, Product Compliance and Data Viz Consultant | Philippines",
+    "url": "https://www.linkedin.com/in/arjayhosmillo/",
+    "profileImage": "https://avatars.githubusercontent.com/u/52721741?v=4"
   },
   {
     "name": "Albert Yumol",
@@ -66,17 +61,28 @@
     "profileImage": "https://avatars.githubusercontent.com/u/17405515"
   },
   {
-    "name": "Arjay Ronald Hosmillo",
-    "info": "Chemical Engineer / Environmental, Product Compliance and Data Viz Consultant | Philippines",
-    "url": "https://www.linkedin.com/in/arjayhosmillo/",
-    "profileImage": "https://avatars.githubusercontent.com/u/52721741?v=4"
+    "name": "Jose Marie Antonio Minoza",
+    "info": "Data Scientist | Philippines",
+    "url": "https://www.linkedin.com/in/jomaminoza/",
+    "profileImage": "https://avatars.githubusercontent.com/u/6972093?v=4"
   },
-
+  {
+    "name": "Neil Ruaro",
+    "info": "Student | Philippines",
+    "url": "https://www.linkedin.com/in/eruaro/",
+    "profileImage": "https://avatars.githubusercontent.com/u/69240261?v=4"
+  },
   {
     "name": "Carl Terence Valdellon",
     "info": "Student | Philippines",
     "url": "https://www.linkedin.com/in/carl-valdellon/",
-    "profileImage": "https://avatars.githubusercontent.com/u/76705051?v=4"
+    "profileImage": "https://avatars.githubusercontent.com/u/76705051?s=400&u=e7e22c6c6626131a7f314ed06e5ba1d5b9112aae&v=4"
+  },
+  {
+    "name": "Abegail Lagar",
+    "info": "Product Engineer | Philippines",
+    "url": "www.linkedin.com/in/abegail-lagar",
+    "profileImage": "https://avatars.githubusercontent.com/abbylagar"
   },
   {
     "name": "Jofer Santiago",
@@ -85,9 +91,93 @@
     "profileImage": "https://avatars.githubusercontent.com/jofersantiago"
   },
   {
-    "name": "Neil Ruaro",
+    "name": "Ar-Em Lampa",
+    "info": "Web Developer | Philippines",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/ar-emlampa.svg",
+    "url": "#"
+  },
+  {
+    "name": "Andre Villanueva",
     "info": "Student | Philippines",
-    "url": "https://www.linkedin.com/in/eruaro/",
-    "profileImage": "https://avatars.githubusercontent.com/u/69240261?v=4"
+    "url": "https://www.linkedin.com/in/marcus-andre-villanueva/",
+    "profileImage": "https://avatars.githubusercontent.com/u/69349444?v=4"
+  },
+  {
+    "name": "Joseph Tolentino",
+    "info": "Electrical Engineer | Philippines",
+    "url": "https://www.linkedin.com/in/jvilltolentino",
+    "profileImage": "https://avatars.githubusercontent.com/jvilltolentino"
+  },
+  {
+    "name": "Kishia Ventura",
+    "info": "Client Solution Architect | Malaysia",
+    "url": "https://www.linkedin.com/in/kishiamae/",
+    "profileImage": "https://avatars.githubusercontent.com/kishiamae"
+  },
+  {
+    "name": "Hannah Gomez",
+    "info": "Data Scientist | Philippines",
+    "url": "https://www.linkedin.com/in/hgsgomez",
+    "profileImage": "https://avatars.githubusercontent.com/u/85746231?v=4"
+  },
+  {
+    "name": "Lester Solaina",
+    "info": "Student | Philippines",
+    "url": "https://www.linkedin.com/in/lester-solaina-827a661b7",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/lestersolaina.svg"
+  },
+  {
+    "name": "Timothy Manabat",
+    "info": "Student | Philippines",
+    "url": "https://www.linkedin.com/in/tkmanabat/",
+    "profileImage": "https://avatars.githubusercontent.com/u/78250892?v=4"
+  },
+  {
+    "name": "Airees Rondain",
+    "info": "Business Insights Analyst | Philippines",
+    "url": "https://www.linkedin.com/in/aireesrondain/",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/aireesrondain.svg"
+  },
+  {
+    "name": "Rowen Remis R. Iral",
+    "info": "DS Architect | Philippines",
+    "url": "https://www.linkedin.com/in/rowenremis",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/rowenremisr.iral.svg"
+  },
+  {
+    "name": "Melchor King Calma",
+    "info": "Software Engineer | Philippines",
+    "url": "www.linkedin.com/in/king-calma",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/melchorkingcalma.svg"
+  },
+  {
+    "name": "Joseph Figuracion",
+    "info": "Jr. Data Scientist | Philippines",
+    "url": "https://www.linkedin.com/in/josephfiguracion/",
+    "profileImage": "https://avatars.githubusercontent.com/u/73586953?v=4"
+  },
+  {
+    "name": "William Raymond Revilla",
+    "info": "Business Insights Analyst | Philippines",
+    "url": "https://www.linkedin.com/in/wrnr1997/",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/williamraymondrevilla.svg"
+  },
+  {
+    "name": "Jester Emerson Carlos",
+    "info": "Jr. Data Scientist | Philippines",
+    "url": "https://www.linkedin.com/in/jester-carlos-3410831a7/",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/jesteremersoncarlos.svg"
+  },
+  {
+    "name": "Yayra de Souza",
+    "info": "Data analyst | Ghana",
+    "url": "https://www.linkedin.com/in/yayra-de-souza/",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/yayradesouza.svg"
+  },
+  {
+    "name": "Joshua Miguel Bernardino",
+    "info": "Student | Philippines",
+    "url": "https://www.linkedin.com/in/jmbernardino/",
+    "profileImage": "https://avatars.dicebear.com/api/identicon/joshuamiguelbernardino.svg"
   }
 ]
