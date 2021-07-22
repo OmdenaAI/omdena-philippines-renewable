@@ -7,6 +7,12 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   // add unique id to dataset
   let dataset: any = [...DOE_dataset];
 
+  // add identifiers to power sources for analytics
+  // this is used to differentiate powers sources from suggested areas
+  dataset.forEach((x: any) => {
+    x.power_station = true;
+  });
+
   // merge datasets
   dataset = [...dataset, ...correlated_data];
 
@@ -20,18 +26,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
   if (searchQuery && searchQuery.trim() !== "") {
     const options = {
-      // isCaseSensitive: false,
-      // includeScore: false,
-      // shouldSort: true,
-      // includeMatches: false,
-      // findAllMatches: false,
-      // minMatchCharLength: 1,
-      // location: 0,
-      // threshold: 0.6,
-      // distance: 100,
-      // useExtendedSearch: false,
-      // ignoreLocation: false,
-      // ignoreFieldNorm: false,
       keys: ["municipality", "category", "type", "operating-hours", "operator"],
     };
 

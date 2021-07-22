@@ -1,16 +1,39 @@
 import { useEffect } from "react";
-import { gaPV, numberWithCommas } from "./Utils";
-import { BarChart } from "reaviz";
+import { fetchGlobalMapdata, gaPV, numberWithCommas } from "./Utils";
+import { BarChart, RadialAreaChart, RadialAxis } from "reaviz";
+import { useState } from "react";
 
 const SiteDetails = (props: any) => {
   const data = props.data;
 
+  const [powerStationsData, setPSData] = useState<any>([]);
+
+  let powerStations: any = fetchGlobalMapdata();
+  let psCount: any = [];
+
   useEffect(() => {
-    let sidebarContainer: any = document.querySelector(".sidebar");
+    // let sidebarContainer: any = document.querySelector(".sidebar");
     gaPV(`Site Details`);
-    setTimeout(() => {
-      sidebarContainer.scroll({ top: 0, behavior: "smooth" });
-    }, 200);
+    // setTimeout(() => {
+    //   sidebarContainer.scroll({ top: 0, behavior: "smooth" });
+    // }, 200);
+
+    powerStations = powerStations
+      .filter((z: any) => z.power_station)
+      .forEach((x: any) => {
+        let psInstance = psCount.find((y: any) => y.key === x.category);
+
+        if (psInstance) {
+          psInstance.data += 1;
+        } else {
+          psCount.push({
+            key: x.category,
+            data: 1,
+          });
+        }
+      });
+
+    setPSData(psCount);
   }, []);
 
   return (
@@ -84,7 +107,7 @@ const SiteDetails = (props: any) => {
           </a>
           , On average, the household electricity consumption (per capita) in
           the Philippines is about{" "}
-          <span className="text-primary">897 kWh, per year.</span>.
+          <span className="text-primary">897 kWh, per year</span>.
         </p>
 
         <p>
@@ -95,6 +118,37 @@ const SiteDetails = (props: any) => {
           (per square meter, per year) for the suggested areas of{" "}
           <strong className="text-primary">{data.municipality}</strong>, We can
           see that solar energy can be an effective power source for this area.
+        </p>
+
+        <h2 className="mt-4">Energy Scene in the Philippines</h2>
+
+        <p>
+          Based on the Department of Energy Dataset. The Power stations types in
+          the Philippines are as follows:
+        </p>
+        <div className="mt--5">
+          <RadialAreaChart
+            data={powerStationsData}
+            height={330}
+            width={330}
+            axis={<RadialAxis type="category" />}
+          />
+        </div>
+        <p className="mt--5">
+          This chart shows us that the country predominantly relies on
+          Non-renewable energy sources like Oil based Power Plants which can
+          harmful to the environment because of their byproducts and High
+          Greenhouse gas emissions.
+        </p>
+
+        <p>
+          While Hydroelectric Power plants are classified as a renewable energy
+          source and are the second most prominent powerplant type in the
+          country. The Philippines is still lacking in the utilization of other
+          renewable energy sources like Solar, Wind, and Geothermal Powerplants,
+          which highlights the need to explore opportunities to utilize these
+          renewable energy sources. To help address the country's growing demand
+          for energy, in a cleaner and more efficient way.
         </p>
 
         <hr />
