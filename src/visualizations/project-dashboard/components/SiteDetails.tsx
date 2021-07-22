@@ -66,7 +66,7 @@ const SiteDetails = (props: any) => {
                 { key: "Minimum", data: data.pvout_average_min },
                 { key: "Maximum", data: data.pvout_average_max },
                 { key: "Mean", data: data.pvout_average_mean },
-                { key: "H. Power Consumption", data: 248.1 },
+                { key: "H. Power Consumption", data: 897 },
                 { key: "Households", data: data.count },
               ]}
             />
@@ -77,24 +77,24 @@ const SiteDetails = (props: any) => {
         <p>
           According to the{" "}
           <a
-            href="https://www.statista.com/statistics/600115/household-consumption-of-electricity-per-capita-in-the-philippines/"
+            href="https://www.statista.com/statistics/1236746/consumption-of-electricity-per-capita-in-the-philippines/"
             target="_blank"
           >
-            Statisa Research Department (2016)
+            Statisa Research Department (2020)
           </a>
-          , On average, the household electricity consumption in the Philippines
-          is about <span className="text-primary">248.1 kWh</span>.
+          , On average, the household electricity consumption (per capita) in
+          the Philippines is about{" "}
+          <span className="text-primary">897 kWh, per year.</span>.
         </p>
 
         <p>
-          And with the average Solar Energy output (per square meter) ranging
-          around{" "}
+          And with the average Solar Energy output ranging around{" "}
           <strong className="text-primary">
             {numberWithCommas(data.pvout_average_mean.toFixed(2))} kWh
           </strong>{" "}
-          for the suggested areas of{" "}
+          (per square meter, per year) for the suggested areas of{" "}
           <strong className="text-primary">{data.municipality}</strong>, We can
-          see that solar energy can be effective power source for this area.
+          see that solar energy can be an effective power source for this area.
         </p>
 
         <hr />
