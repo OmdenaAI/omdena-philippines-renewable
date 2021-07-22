@@ -1,22 +1,31 @@
 import { useEffect } from "react";
 import { fetchGlobalMapdata, gaPV, numberWithCommas } from "./Utils";
-import { BarChart, RadialAreaChart, RadialAxis } from "reaviz";
+import {
+  BarChart,
+  RadialAreaChart,
+  RadialAxis,
+  PieChart,
+  PieArcSeries,
+} from "reaviz";
 import { useState } from "react";
 
 const SiteDetails = (props: any) => {
   const data = props.data;
 
   const [powerStationsData, setPSData] = useState<any>([]);
+  const [emissionsData, setEmissions] = useState<any>([]);
 
   let powerStations: any = fetchGlobalMapdata();
   let psCount: any = [];
+  let emData: any = [];
+  let totalEmissions = 0;
 
   useEffect(() => {
-    // let sidebarContainer: any = document.querySelector(".sidebar");
+    let sidebarContainer: any = document.querySelector(".sidebar");
     gaPV(`Site Details`);
-    // setTimeout(() => {
-    //   sidebarContainer.scroll({ top: 0, behavior: "smooth" });
-    // }, 200);
+    setTimeout(() => {
+      sidebarContainer.scroll({ top: 0, behavior: "smooth" });
+    }, 200);
 
     powerStations = powerStations
       .filter((z: any) => z.power_station)
@@ -27,6 +36,7 @@ const SiteDetails = (props: any) => {
           psInstance.data += 1;
         } else {
           psCount.push({
+            id: Math.random(),
             key: x.category,
             data: 1,
           });
@@ -34,6 +44,36 @@ const SiteDetails = (props: any) => {
       });
 
     setPSData(psCount);
+
+    // plot GHG emissions data from DOE dataset
+    fetchGlobalMapdata()
+      .filter((z: any) => z.power_station)
+      .forEach((x: any) => {
+        let psInstance = emData.find((y: any) => y.key === x.category);
+
+        if (psInstance) {
+          psInstance.data += Number(x.installed_g_co2_eq);
+        } else {
+          emData.push({
+            key: x.category,
+            data: Number(x.installed_g_co2_eq),
+          });
+        }
+
+        totalEmissions += Number(x.installed_g_co2_eq);
+      });
+
+    emData.forEach((x: any) => {
+      if (x.data !== 0) {
+        x.data = (x.data / totalEmissions) * 100;
+      } else {
+        x.data = 0;
+      }
+    });
+
+    emData = emData.sort((a: any, b: any) => b.data - a.data);
+
+    setEmissions(emData);
   }, []);
 
   return (
@@ -120,7 +160,9 @@ const SiteDetails = (props: any) => {
           see that solar energy can be an effective power source for this area.
         </p>
 
-        <h2 className="mt-4">Energy Scene in the Philippines</h2>
+        <hr />
+
+        <h2 className="mt-4">Energy scene in the Philippines</h2>
 
         <p>
           Based on the Department of Energy Dataset. The Power stations types in
@@ -149,6 +191,46 @@ const SiteDetails = (props: any) => {
           which highlights the need to explore opportunities to utilize these
           renewable energy sources. To help address the country's growing demand
           for energy, in a cleaner and more efficient way.
+        </p>
+
+        <h2 className="mt-4">Need for renewable energy</h2>
+        <p>
+          Using the Department of energy dataset we can see which types of power
+          sources contribute most to greenhouse gas emissions from power plants
+          in the Philippines.
+        </p>
+        <div className="ml-3">
+          <PieChart
+            width={300}
+            height={230}
+            data={emissionsData}
+            series={
+              <PieArcSeries
+                cornerRadius={3}
+                padAngle={0.02}
+                padRadius={200}
+                doughnut={true}
+                colorScheme={["#bc5090", "#ff6361", "#ffa600"]}
+              />
+            }
+          />
+        </div>
+
+        <ol className="list-item mt--3 pl-4">
+          {emissionsData.map((x: any) => {
+            return (
+              <li>
+                <strong>{x.key}</strong> - {x.data.toFixed(3)}%
+              </li>
+            );
+          })}
+        </ol>
+
+        <p>
+          From this breakdown we can see that Coal, Oil-based, and Natural Gas
+          Powerplants are the top 3 most significant sources of Greenhouse gas
+          emissions, which contribute to pollution and climate change, further
+          emphasizing the need for renewable and cleaner energy sources.
         </p>
 
         <hr />
