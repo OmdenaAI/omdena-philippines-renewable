@@ -13,6 +13,7 @@ import {
   stopPageLoad,
 } from "./Utils";
 import MapStyleSelector from "../styles/MapStyleSelector";
+import LoadingSkeleton from "./LoadingSkeleton";
 
 const Sidebar = (props: any) => {
   const [areas, setAreas] = useState<any>(null);
@@ -65,11 +66,9 @@ const Sidebar = (props: any) => {
 
     currentActiveMarker?.classList.remove("active-marker");
 
-    // setTimeout(() => {
     if (markerItem) {
       markerItem.classList.add("active-marker");
     }
-    // }, 200);
   };
 
   const searchDataset = (search_query: string) => {
@@ -198,6 +197,8 @@ const Sidebar = (props: any) => {
                   <h2>No results found.</h2>
                 </div>
               )}
+
+              {!areas && <LoadingSkeleton />}
 
               {areas &&
                 areas.map((data: any, index: number) => {

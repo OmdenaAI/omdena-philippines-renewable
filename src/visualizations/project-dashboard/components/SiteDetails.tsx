@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { fetchGlobalMapdata, gaPV, numberWithCommas } from "./Utils";
+import {
+  fetchGlobalMapdata,
+  gaPV,
+  measureCoordDistance,
+  numberWithCommas,
+} from "./Utils";
 import {
   BarChart,
   RadialAreaChart,
@@ -14,11 +19,32 @@ const SiteDetails = (props: any) => {
 
   const [powerStationsData, setPSData] = useState<any>([]);
   const [emissionsData, setEmissions] = useState<any>([]);
+  const [nearbyAreas, setNearbyAreas] = useState<any>([]);
+  const [stations, setStationData] = useState<any>([]);
 
   let powerStations: any = fetchGlobalMapdata();
   let psCount: any = [];
   let emData: any = [];
   let totalEmissions = 0;
+  let nearAreas: any = [];
+  let nearPowerStations: any = [];
+
+  const power_station_images: any = {
+    Solar:
+      "https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=10",
+    Coal: "https://images.unsplash.com/photo-1622641170740-3f45d655c4b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=10",
+    Biomass:
+      "https://images.unsplash.com/photo-1582282352927-04277241ea93?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=10",
+    "Natural Gas":
+      "https://images.unsplash.com/photo-1509390288171-ce2088f7d08e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=10",
+    Wind: "https://images.unsplash.com/photo-1548337138-e87d889cc369?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=10",
+    "Oil-Based":
+      "https://images.unsplash.com/photo-1585252155261-cff31944d781?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=10",
+    Hydroelectric:
+      "https://images.unsplash.com/photo-1593318939199-3e82843af95e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=10",
+    Geothermal:
+      "https://images.unsplash.com/photo-1606400767662-e6fbecaa58b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=10",
+  };
 
   useEffect(() => {
     let sidebarContainer: any = document.querySelector(".sidebar");
@@ -74,7 +100,46 @@ const SiteDetails = (props: any) => {
     emData = emData.sort((a: any, b: any) => b.data - a.data);
 
     setEmissions(emData);
-  }, []);
+
+    // produce data for the nearby areas to explore
+
+    fetchGlobalMapdata()
+      .filter((z: any) => z.suggested_area)
+      .forEach((x: any) => {
+        x.distanceFromArea = measureCoordDistance(
+          data.latitude,
+          data.longitude,
+          x.latitude,
+          x.longitude,
+          "k"
+        );
+        nearAreas.push(x);
+      });
+
+    nearAreas = nearAreas.sort(
+      (a: any, b: any) => a.distanceFromArea - b.distanceFromArea
+    );
+
+    setNearbyAreas(nearAreas);
+
+    // process data for nearby power stations from the selected area
+    fetchGlobalMapdata()
+      .filter((z: any) => z.power_station)
+      .forEach((item: any) => {
+        item.distance = measureCoordDistance(
+          data.latitude,
+          data.longitude,
+          item.latitude,
+          item.longitude,
+          "k"
+        );
+        nearPowerStations.push(item);
+      });
+
+    nearPowerStations.sort((a: any, b: any) => a.distance - b.distance);
+
+    setStationData(nearPowerStations);
+  }, [props.data]);
 
   return (
     <>
@@ -104,7 +169,7 @@ const SiteDetails = (props: any) => {
 
         <h2 className="mt-4">Hope in Solar Energy</h2>
         <img
-          src="https://images.unsplash.com/photo-1592833159117-ac790d4066e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+          src="https://images.unsplash.com/photo-1592833159117-ac790d4066e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=20"
           className="img-fluid my-2"
         />
         <p>
@@ -159,6 +224,67 @@ const SiteDetails = (props: any) => {
           <strong className="text-primary">{data.municipality}</strong>, We can
           see that solar energy can be an effective power source for this area.
         </p>
+
+        <h3 className="mt-4">
+          <i className="la la-bolt text-primary" /> Powerplants nearby this
+          area:
+        </h3>
+        <p>Powerplants that can be found nearby this suggested area.</p>
+        <div className="contributors">
+          {stations.slice(0, 2).map((item: any, index: number) => {
+            return (
+              <div className="contributor cursor-default" key={index}>
+                <img
+                  src={power_station_images[item.category]}
+                  className="avatar avatar-lg"
+                />
+                <div className="info">
+                  <span className="name">{item.facility_name}</span>
+                  <span className="info">
+                    {item.category} ({item.connection_type})
+                  </span>
+                  <span className="info">
+                    Installed Capacity: {item.installed_capacity_mw} MW
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <h3 className="mt-4">
+          <i className="la la-map text-primary mr-1" />
+          Explore Nearby Areas:
+        </h3>
+
+        <div className="area-explorer">
+          {nearbyAreas.slice(1, 100).map((item: any, index: number) => {
+            return (
+              <div
+                className="area-item"
+                key={index}
+                onClick={() => {
+                  let markerItem: any = document.querySelector(
+                    `#mk-${item.id}`
+                  );
+                  if (markerItem) {
+                    markerItem.click();
+                  }
+                }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1536481046830-9b11bb07e8b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=10"
+                  alt="area image"
+                />
+                <span>
+                  <strong>{item.municipality}</strong>
+                </span>
+                <span className="text-primary">
+                  {item.distanceFromArea.toFixed(3)} km
+                </span>
+              </div>
+            );
+          })}
+        </div>
 
         <hr />
 
@@ -233,6 +359,48 @@ const SiteDetails = (props: any) => {
           emphasizing the need for renewable and cleaner energy sources.
         </p>
 
+        <h2 className="mt-4">
+          <i className="la la-map text-primary mr-1" />
+          Explore Other Areas:
+        </h2>
+
+        <div className="area-explorer">
+          {[...nearbyAreas]
+            .map((ix: any) => {
+              ix.rid = Math.random();
+              return ix;
+            })
+            .sort((a: any, b: any) => a.rid - b.rid)
+            .slice(1, 100)
+            .map((item: any, index: number) => {
+              return (
+                <div
+                  className="area-item"
+                  key={index}
+                  onClick={() => {
+                    let markerItem: any = document.querySelector(
+                      `#mk-${item.id}`
+                    );
+                    if (markerItem) {
+                      markerItem.click();
+                    }
+                  }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1526731955462-f6085f39e742?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=30"
+                    alt="area image"
+                  />
+                  <span>
+                    <strong>{item.municipality}</strong>
+                  </span>
+                  <span className="text-primary">
+                    {item.distanceFromArea.toFixed(3)} km
+                  </span>
+                </div>
+              );
+            })}
+        </div>
+
         <hr />
 
         <div className="card border info-card mb-3 mt-3">
@@ -258,22 +426,24 @@ const SiteDetails = (props: any) => {
           learn more
         </p>
 
-        <button
-          className="btn btn-sm btn-default"
-          onClick={() => {
-            props.setScreen("about");
-          }}
-        >
-          <i className="la la-user" /> See Contributors
-        </button>
-        <button
-          className="btn btn-sm btn-default"
-          onClick={() => {
-            props.setScreen("research");
-          }}
-        >
-          <i className="la la-chart-line" /> Research Tab
-        </button>
+        <div className="d-flex justify-content-center">
+          <button
+            className="btn btn-default"
+            onClick={() => {
+              props.setScreen("about");
+            }}
+          >
+            <i className="la la-user" /> Contributors
+          </button>
+          <button
+            className="btn  btn-default"
+            onClick={() => {
+              props.setScreen("research");
+            }}
+          >
+            <i className="la la-chart-line" /> Research
+          </button>
+        </div>
       </div>
     </>
   );
