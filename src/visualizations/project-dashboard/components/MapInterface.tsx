@@ -7,7 +7,7 @@ import {
   gaUE,
   getFillOpacity,
   isMobile,
-  MovesStyle,
+  satelliteStyle,
 } from "./Utils";
 
 // replace with your own access token from Mapbox.
@@ -19,7 +19,7 @@ const MapInterface = (props: any) => {
     // start new Mapbox Instance
     const map = new mapboxgl.Map({
       container: document.getElementById("map"),
-      style: localStorage.mapStyle ? localStorage.mapStyle : MovesStyle,
+      style: localStorage.mapStyle ? localStorage.mapStyle : satelliteStyle,
       center: [120.979, 15.0941],
       zoom: 7.3,
       minZoom: 6,

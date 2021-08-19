@@ -36,7 +36,7 @@ const MapStyleSelector = () => {
     if (localStorage.mapMode) {
       setMode(localStorage.mapMode);
     } else {
-      setMode("dark");
+      setMode("satellite");
     }
   }, []);
 

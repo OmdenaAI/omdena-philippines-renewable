@@ -5,7 +5,7 @@ const AboutTab = () => {
   return (
     <div className="research-tab px-2">
       <img
-        src="https://media-exp1.licdn.com/dms/image/C5622AQHu7Y0Nx0RR2A/feedshare-shrink_1280/0/1622549311322?e=1628121600&v=beta&t=fEieL9q7Sl3ExmiHg4BYIE4pm6ezYs14PzdreCwtecA"
+        src="/images/omdena-ph-poster.jpeg"
         className="img-fluid"
       />
       <h2 className="mt-4">Omdena Philippines Chapter</h2>
