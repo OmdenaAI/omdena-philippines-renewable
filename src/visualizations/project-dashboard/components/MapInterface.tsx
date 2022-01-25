@@ -35,7 +35,7 @@ const MapInterface = (props: any) => {
 
       map.addSource("correlated_data", {
         type: "geojson",
-        data: "/geojson_maps/correlated_v2.json",
+        data: "/geojson_maps/crv2.json",
       });
 
       map.addLayer({
